@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:28:15 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 16:03:45 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+char	*ft_strdup(const char *src)
 {
-	while (*str)
-	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
-	}
-	return (NULL);
+	char	*dst;
+	size_t	len;
+
+	len = ft_strlen(src) + 1;
+	dst = malloc(len);
+	if (dst == NULL)
+		return (NULL);
+	ft_memcpy(dst, src, len);
+	return (dst);
 }

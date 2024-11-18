@@ -1,12 +1,18 @@
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fr_putchar_fd.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/18 10:51:45 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 12:25:50 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*Outputs the character ’c’ to the given file
-descriptor
-*/
-void ft_putchar_fd(char c, int fd)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-    write(fd,&c,1);
+	write(fd, &c, 1);
 }

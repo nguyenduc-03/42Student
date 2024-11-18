@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/04 16:41:38 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 13:58:25 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+void	*ft_memcpy(void *dest, const void *src, size_t num)
 {
-	while (*str)
+	unsigned char		*d;
+	const unsigned char	*s;
+
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	while (num--)
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		*d++ = *s++;
 	}
-	return (NULL);
+	return (dest);
 }

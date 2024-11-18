@@ -1,24 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/09/03 17:14:01 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 16:02:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+int	ft_isascii(int c)
 {
-	while (*str)
-	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
-	}
-	return (NULL);
+	if (!(c >= 0 && c <= 127))
+		return (0);
+	return (1);
 }

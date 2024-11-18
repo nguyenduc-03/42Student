@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/09/03 13:21:11 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 12:43:50 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+int	ft_isalpha(int c)
 {
-	while (*str)
-	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
-	}
-	return (NULL);
+	if (!((c >= 'a' && c <= 'z') 
+			|| (c >= 'A' && c <= 'Z')))
+		return (0);
+	return (1);
 }

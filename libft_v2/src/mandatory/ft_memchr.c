@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:16:44 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 11:18:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-char	*ft_strchr(const char *str, int search_char)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (*str)
+	unsigned char	*ptr;
+	unsigned char	ch;
+
+	ch = (unsigned char)c;
+	ptr = (unsigned char *)s;
+	while (n--)
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		if (*ptr == ch)
+			return ((void *)ptr);
+		ptr++;
 	}
 	return (NULL);
 }

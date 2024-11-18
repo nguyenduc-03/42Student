@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:18:59 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 11:20:18 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stddef.h>
 
-char	*ft_strchr(const char *str, int search_char)
+int	ft_memcmp(const void *str1, const void *str2, size_t n)
 {
-	while (*str)
+	unsigned char	*ptr1;
+	unsigned char	*ptr2;
+
+	ptr1 = (unsigned char *)str1;
+	ptr2 = (unsigned char *)str2;
+	while (n--)
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		if (*ptr1 != *ptr2)
+			return (*ptr1 - *ptr2);
+		ptr1++;
+		ptr2++;
 	}
-	return (NULL);
+	return (0);
 }

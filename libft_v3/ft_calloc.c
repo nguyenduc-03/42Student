@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:23:45 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 16:42:39 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	while (*str)
+	void	*ptr;
+	size_t	i;
+
+	if (nmemb != 0 && (nmemb * size) / nmemb != size)
+		return (NULL);
+	ptr = (void *)malloc(size * nmemb);
+	if (!ptr)
+		return (NULL);
+	if (size == 0)
+		return (ptr);
+	i = 0;
+	while (i < (nmemb * size))
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		((unsigned char *)ptr)[i] = 0;
+		i++;
 	}
-	return (NULL);
+	return (ptr);
 }

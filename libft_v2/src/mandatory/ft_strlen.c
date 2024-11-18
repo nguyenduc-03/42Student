@@ -1,10 +1,25 @@
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/09/02 17:21:27 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 11:19:34 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-size_t ft_strlen(const char *str){
-    int i = 0;
-    while(*str){
-        str++;
-        i++;
-    }
-    return i;
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
+{
+	int	count;
+
+	count = 0;
+	while (str[count] != '\0')
+	{
+		count++;
+	}
+	return (count);
 }

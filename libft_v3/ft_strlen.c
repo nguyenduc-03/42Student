@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/09/02 17:21:27 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 15:14:06 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+size_t	ft_strlen(const char *str)
 {
-	while (*str)
+	int	count;
+
+	count = 0;
+	while (str[count] != '\0')
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		count++;
 	}
-	return (NULL);
+	return (count);
 }

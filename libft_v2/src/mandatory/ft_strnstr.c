@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:20:53 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 11:23:28 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stddef.h>
 
-char	*ft_strchr(const char *str, int search_char)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	while (*str)
+	size_t	i;
+
+	i = 0;
+	if (*little == '\0')
+		return ((char *)big);
+	while (*big != '\0' && len > 0)
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		while (big[i] == little[i] && (big[i] != '\0' && i < len))
+		{
+			i++;
+			if (little[i] == '\0')
+				return ((char *)big);
+		}
+		big++;
+		len--;
 	}
-	return (NULL);
+	return (NULL); 
 }

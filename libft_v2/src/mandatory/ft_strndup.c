@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/13 11:28:15 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 12:25:43 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stddef.h>
+#include <stdlib.h>
 
-char	*ft_strchr(const char *str, int search_char)
+char	*ft_strndup(const char *s, size_t n)
 {
-	while (*str)
+	char	*dup;
+	size_t	i;
+
+	dup = (char *)malloc(n + 1);
+	if (dup == NULL)
+		return (NULL);
+	i = 0;
+	while (i < n && s[i] != '\0')
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		dup[i] = s[i];
+		i++;
 	}
-	return (NULL);
+	dup[i] = '\0';
+	return (dup);
 }

@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/18 11:15:29 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/18 11:21:29 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/04 16:58:22 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 14:57:05 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+size_t	ft_strlcat(char *dest, const char *src, size_t size)
 {
-	size_t	len_1;
-	size_t	len_2;
-	int		i;
-	char	*strjoin;
+	size_t				dest_len;
+	size_t				i;
+	size_t				src_len;
+	size_t				available_space;
 
 	i = 0;
-	len_1 = ft_strlen(s1);
-	len_2 = ft_strlen(s2);
-	strjoin = (char *)malloc(len_1 + len_2 + 1);
-	if (!strjoin)
-		return (NULL);
-	while (len_1 != 0)
+	dest_len = ft_strlen(dest);
+	available_space = size - dest_len - 1;
+	src_len = ft_strlen(src);
+	if (size <= dest_len)
 	{
-		strjoin[i] = s1[i];
-		i++;
-		len_1--;
+		return (size + src_len);
 	}
-	while (len_2-- != 0)
+	while (src[i] != '\0' && i < available_space)
 	{
-		strjoin[i] = s2[len_1];
+		dest[dest_len + i] = src[i];
 		i++;
-		len_1++;
 	}
-	strjoin[i] = '\0';
-	return (strjoin);
+	dest[dest_len + i] = '\0';
+	return (dest_len + src_len);
 }

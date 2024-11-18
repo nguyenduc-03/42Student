@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*																			*/
 /*														:::	  ::::::::   */
-/*   ft_putnbr_fd.c									 :+:	  :+:	:+:   */
+/*   ft_strchr.c										:+:	  :+:	:+:   */
 /*													+:+ +:+		 +:+	 */
 /*   By: ducnguye <ducnguye@student.42.fr>		  +#+  +:+	   +#+		*/
 /*												+#+#+#+#+#+   +#+		   */
-/*   Created: 2024/11/18 12:29:21 by ducnguye		  #+#	#+#			 */
-/*   Updated: 2024/11/18 12:29:21 by ducnguye		 ###   ########.fr	   */
+/*   Created: 2024/11/13 11:09:43 by ducnguye		  #+#	#+#			 */
+/*   Updated: 2024/11/13 15:14:06 by ducnguye		 ###   ########.fr	   */
 /*																			*/
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+char	*ft_strchr(const char *str, int search_char)
 {
 	char	c;
 
-	if (n == -2147483648)
+	c = search_char;
+	if (search_char == 0)
 	{
-		write(fd, "-2147483648", 12);
-		return ;
+		str = str + ft_strlen(str);
+		return ((char *)str);
 	}
-	if (n < 0)
+	while (*str)
 	{
-		write(fd, "-", 1);
-		n = -n;
+		if (*str == c)
+			return ((char *)str);
+		str++;
 	}
-	if (n >= 10)
-		ft_putnbr_fd(n / 10, fd);
-	c = (n % 10) + '0';
-	write(fd, &c, 1);
+	return (NULL);
 }

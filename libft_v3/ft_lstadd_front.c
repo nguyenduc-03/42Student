@@ -1,24 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/18 13:43:46 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/18 13:44:08 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	while (*str)
-	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
-	}
-	return (NULL);
+	if (!lst || !new)
+		return ;
+	new->next = *lst;
+	*lst = new;
 }

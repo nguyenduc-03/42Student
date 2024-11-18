@@ -1,24 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/09/03 17:44:24 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 15:13:54 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	while (*str)
+	size_t	i;
+	size_t	src_len;
+
+	i = 0;
+	src_len = 0;
+	while (src[src_len] != '\0')
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		src_len++;
 	}
-	return (NULL);
+	if (size > 0)
+	{
+		while (i < size - 1 && src[i] != '\0')
+		{
+			dest[i] = src[i];
+			i++;
+		}
+		dest[i] = '\0';
+	}
+	return (src_len);
 }

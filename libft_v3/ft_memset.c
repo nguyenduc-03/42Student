@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:09:43 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 11:20:28 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/04 16:11:20 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/13 15:29:11 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-char	*ft_strchr(const char *str, int search_char)
+void	*ft_memset(void *ptr, int value, size_t num)
 {
-	while (*str)
+	unsigned char	*p;
+
+	p = (unsigned char *)ptr;
+	while (num--)
 	{
-		if (*str == search_char)
-			return ((char *)str);
-		str++;
+		*p++ = (unsigned char)value;
 	}
-	return (NULL);
+	return (ptr);
 }
