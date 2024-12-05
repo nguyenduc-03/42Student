@@ -1,6 +1,6 @@
 # Compiler and flags
 CC         = gcc
-CFLAGS     = -Wall -Wextra -Werror
+CFLAGS     = -Wall -Wextra -Werror 
 NAME       = get_next_line
 SRCS       = get_next_line.c get_next_line_utils.c main.c
 OBJS       = $(SRCS:.c=.o)
@@ -9,6 +9,7 @@ OBJS       = $(SRCS:.c=.o)
 all: $(NAME)
 
 # Compile the executable
+
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
