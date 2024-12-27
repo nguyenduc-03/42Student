@@ -1,7 +1,19 @@
-#include <stdio.h>
-#include <unistd.h>
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/11/27 15:16:50 by ducnguye          #+#    #+#             */
+/*   Updated: 2024/11/27 19:18:54 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "libft.h"
 #include <stdarg.h>
 
+<<<<<<< HEAD
 /*
 • %c Prints a single character.
 • %s Prints a string (as defined by the common C convention).
@@ -37,19 +49,45 @@ char *find_symbol(const char *str) //return the array of string whenever hit a %
 
 */
 int	ft_putstr(const char *s)
+=======
+/* int	ft_atoi_base(char *str, char *base);
+void	ft_string( char *str, ...) // print the string of char
 {
-    int i = 0;
-	if (!s)
-		return -1;
-	while (*s)
+
+}
+void	ft_number( char *str, ...); */
+
+int	ft_printf(const char *str, ...)
+>>>>>>> refs/remotes/origin/main
+{
+	va_list	agruments;
+	va_start(agruments, str);
+	char	option;
+	int		i;
+
+	i = 0;
+	while (str[i])
 	{
-		write(1, s, 1);
-		s++;
-        i++;
+		if (str[i] == '%')
+		{
+			option = str[i + 1];
+			if (option == 's')
+			{
+				ft_putstr_fd (va_arg(agruments, char *), 1);
+				i = i + 2;
+			}
+		}
+		else
+		{
+			write (1, &str[i], 1);
+			i++;
+		}
 	}
-    return (i);
+	va_end(agruments);
+	return (i);
 }
 
+<<<<<<< HEAD
 int ft_printf(const char *str, ...)
 {
     va_list agruments;
@@ -73,3 +111,10 @@ int main()
     printf("asd%dsda");
     return 0;
 }
+=======
+int main()
+{
+	ft_printf("try: %s%s\n", "hello");
+	return 0;
+}
+>>>>>>> refs/remotes/origin/main

@@ -8,8 +8,13 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
+<<<<<<< HEAD
       "cwd": "/home/thaiduc/42/printf",
       "program": "/home/thaiduc/42/printf/build/Debug/outDebug",
+=======
+      "cwd": "/home/ducnguye/42cursus/github/42Student/printf",
+      "program": "/home/ducnguye/42cursus/github/42Student/printf/build/Debug/outDebug",
+>>>>>>> refs/remotes/origin/main
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
