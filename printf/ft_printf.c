@@ -12,7 +12,7 @@
 • %x Prints a number in hexadecimal (base 16) lowercase format.
 • %X Prints a number in hexadecimal (base 16) uppercase format.
 • %% Prints a percent sign.
-*/
+
 
 
 char *find_symbol(const char *str) //return the array of string whenever hit a %, move it to a new index
@@ -34,8 +34,8 @@ char *find_symbol(const char *str) //return the array of string whenever hit a %
         str++;
     }
     return array;
-}
 
+*/
 int	ft_putstr(const char *s)
 {
     int i = 0;
@@ -50,15 +50,11 @@ int	ft_putstr(const char *s)
     return (i);
 }
 
-int ft_p(const char *str, ...)
+int ft_printf(const char *str, ...)
 {
     va_list agruments;
-
-    //a function to go though str and check for %d, and return back   "Hello %s baby %d\n", "David"
-    //find_symbol(str);
-
-
     va_start(agruments, str);
+    
     int return_value = 0;
 
     const char *s = va_arg(agruments, const char*);
@@ -73,7 +69,7 @@ int ft_p(const char *str, ...)
 
 int main()
 {
-    ft_p("Hi my lady","Hi I undetstand now\n");
+    ft_printf("Hi my lady","Hi I undetstand now\n");
     printf("asd%dsda");
     return 0;
 }
