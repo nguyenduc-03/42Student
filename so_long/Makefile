@@ -1,5 +1,5 @@
 NAME = so_long
-SRC = test1.c
+SRC = test4.c
 # Add your additional source files here, e.g.:
 # $(addprefix src/, main.c utils.c draw.c map_parser.c path_checker.c game_utils.c map_parser_utils.c free.c)
 # $(addprefix gnl/, gnl.c gnl_utils.c)
@@ -13,7 +13,8 @@ CCFLAGS = -Wextra -Wall -Werror -Imlx -Iincludes
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C mlx/ # Build MiniLibX
+	make -C mlx/ 
+# Build MiniLibX
 	$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $(NAME)
 
 %.o: %.c

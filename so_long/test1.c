@@ -1,28 +1,22 @@
 #include <mlx.h>
-#include <unistd.h>
 
-int main(void)
-{
+typedef struct	s_vars {
 	void	*mlx;
-	void	*mlx_win;
+	void	*win;
+}				t_vars;
 
-	// Initialize MiniLibX
-	mlx = mlx_init();
-	if (!mlx)
-	{
-		write(2, "Error: Failed to initialize MiniLibX\n", 37);
-		return (1);
-	}
-
-	// Create a new window
-	mlx_win = mlx_new_window(mlx, 800, 600, "Hello, MiniLibX!");
-	if (!mlx_win)
-	{
-		write(2, "Error: Failed to create window\n", 31);
-		return (1);
-	}
-
-	// Enter the MiniLibX event loop
-	mlx_loop(mlx);
+int	close(int keycode, t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
 	return (0);
+}
+
+int	main(void)
+{
+	t_vars	vars;
+
+	vars.mlx = mlx_init();
+	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "Hello world!");
+	mlx_hook(vars.win, 2, 1L<<0, close, &vars);
+	mlx_loop(vars.mlx);
 }
