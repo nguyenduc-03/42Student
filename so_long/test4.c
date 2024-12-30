@@ -41,13 +41,22 @@ int	handle_keypress(int keycode, t_vars *vars)
 	return (0);
 }
 
+// Function to handle the "X" button close event
+int	handle_close(t_vars *vars)
+{
+	mlx_destroy_window(vars->mlx, vars->win);
+	exit(0);
+	return (0);
+}
+
+
 int	main(void)
 {
 	t_vars	vars;
 
 	// Initialize the MiniLibX instance
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 200, 200, "XPM Example");
+	vars.win = mlx_new_window(vars.mlx, 800, 800, "Find the keys");
 
 	// Load background image (XPM format)
 	vars.background_img = mlx_xpm_file_to_image(vars.mlx, "./background.xpm", &vars.bg_width, &vars.bg_height);
@@ -72,6 +81,8 @@ int	main(void)
 	// Display the images
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.background_img, 0, 0);
 	mlx_put_image_to_window(vars.mlx, vars.win, vars.character_img, vars.char_x, vars.char_y);
+
+	mlx_hook(vars.win, DestroyNotify, 0, handle_close, &vars);
 
 	// Hook key press event using mlx_hook
 	mlx_hook(vars.win, KeyPress, KeyPressMask, handle_keypress, &vars);

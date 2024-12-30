@@ -1,5 +1,5 @@
-NAME = so_long
-SRC = test4.c
+NAME = game
+SRC = test6.c
 # Add your additional source files here, e.g.:
 # $(addprefix src/, main.c utils.c draw.c map_parser.c path_checker.c game_utils.c map_parser_utils.c free.c)
 # $(addprefix gnl/, gnl.c gnl_utils.c)
