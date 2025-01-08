@@ -1,3 +1,9 @@
 [submodule "so_long/mlxx"]
 	path = so_long/mlxx
 	url = https://github.com/42Paris/minilibx-linux
+[submodule "printf/ft_printf_tester"]
+	path = printf/ft_printf_tester
+	url = https://github.com/paulo-santana/ft_printf_tester.git
+[submodule "printf/printfTester"]
+	path = printf/printfTester
+	url = https://github.com/Tripouille/printfTester.git
