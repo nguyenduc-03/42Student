@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2025/01/11 15:13:33 by ducnguye          #+#    #+#              #
+#    Updated: 2025/01/11 15:13:34 by ducnguye         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 # Compiler and flags
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -12,8 +24,14 @@ SRC = ft_printf.c ft_putchar_fd.c ft_putstr_fd.c ft_putnbr_fd.c ft_putnbr_base_f
 OBJ = $(SRC:.c=.o)
 
 # Path configuration
-SRCS = $(addprefix $(SRCDIR)/, $(SRC))
-OBJS = $(addprefix $(OBJDIR)/, $(OBJ))
+SRCDIR = src
+OBJDIR = obj
+
+SRCS = $(SRCDIR)/ft_printf.c $(SRCDIR)/ft_putchar_fd.c $(SRCDIR)/ft_putstr_fd.c \
+		$(SRCDIR)/ft_putnbr_fd.c $(SRCDIR)/ft_putnbr_base_fd.c $(SRCDIR)/ft_putptr_fd.c
+OBJS = $(OBJDIR)/ft_printf.o $(OBJDIR)/ft_putchar_fd.o $(OBJDIR)/ft_putstr_fd.o \
+		$(OBJDIR)/ft_putnbr_fd.o $(OBJDIR)/ft_putnbr_base_fd.o $(OBJDIR)/ft_putptr_fd.o
+
 
 # Library name
 NAME = libftprintf.a

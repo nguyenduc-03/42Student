@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 13:48:55 by codespace         #+#    #+#             */
-/*   Updated: 2025/01/08 13:48:57 by codespace        ###   ########.fr       */
+/*   Updated: 2025/01/11 15:06:12 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ int	print_format(va_list args, const char format)
 		return (ft_putnbr_fd(va_arg(args, int), 1));
 	else if (format == 'u')
 		return (ft_putnbr_base_fd(va_arg(args, unsigned int),
-			"0123456789", 1));
+				"0123456789", 1));
 	else if (format == 'x')
 		return (ft_putnbr_base_fd(va_arg(args, unsigned int),
-			"0123456789abcdef", 1));
+				"0123456789abcdef", 1));
 	else if (format == 'X')
 		return (ft_putnbr_base_fd(va_arg(args, unsigned int),
-			"0123456789ABCDEF", 1));
-    else if (format == 'p')
-        return (ft_putptr_fd(va_arg(args, void *), 1));
+				"0123456789ABCDEF", 1));
+	else if (format == 'p')
+		return (ft_putptr_fd(va_arg(args, void *), 1));
 	else if (format == '%')
 		return (ft_putchar_fd('%', 1));
 	else
