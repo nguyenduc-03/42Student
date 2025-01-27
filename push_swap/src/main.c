@@ -1,8 +1,15 @@
 #include "push_swap.h"
 
+void printArray(int arr[], int n) {
+    for (int i = 0; i < n; i++) {
+        printf("%d ", arr[i]);
+    }
+    printf("\n");
+}
+
 int	main(int argc, char** argv) // ./a 1 2 3 
 {
-	//check for integer and store in an int array = done
+	// still need to check for "3 2 1", using ft_split 
 	int array[argc - 1];
 	int i = 0;
 	while(i <= argc - 2 )
@@ -17,6 +24,6 @@ int	main(int argc, char** argv) // ./a 1 2 3
 		i++;
 	}
 
-	// now the sorting 
+	// now the sorting and print the swap push according to wiki, block sort is fast
 	return (0);	
 }

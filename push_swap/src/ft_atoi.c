@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	ft_atoi(const char *str) // return int of string ( and also check for)
+int	ft_atoi(const char *str) // return int of string 
 {
 	int	i;
 	int	sign;
