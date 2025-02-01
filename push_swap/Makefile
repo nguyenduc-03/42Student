@@ -3,7 +3,7 @@ NAME = push_swap
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS = src/ft_atoi.c src/ft_is_integer.c src/main.c 2 
+SRCS = src/ft_atoi.c src/ft_is_integer.c src/main.c  src/selection_sort.c
 OBJS = $(SRCS:src/%.c=obj/%.o)
 
 INCLUDE = -I inc/

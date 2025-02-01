@@ -1,10 +1,10 @@
 #include "push_swap.h"
 
 void printArray(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
-        printf("%d ", arr[i]);
-    }
-    printf("\n");
+	for (int i = 0; i < n; i++) {
+		printf("%d ", arr[i]);
+	}
+	printf("\n");
 }
 
 int	main(int argc, char** argv) // ./a 1 2 3 
@@ -25,5 +25,7 @@ int	main(int argc, char** argv) // ./a 1 2 3
 	}
 
 	// now the sorting and print the swap push according to wiki, block sort is fast
+	selectionSort(array, argc-1);
+	printArray(array,argc -1);
 	return (0);	
 }

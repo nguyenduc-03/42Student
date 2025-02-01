@@ -6,9 +6,10 @@
 # include <string.h>
 # include <stdlib.h>
 
-int	ft_atoi(const char *str);
-int ft_is_integer(const char *str);
-void blockSort(int arr[], int n);
+int		ft_atoi(const char *str);
+int		ft_is_integer(const char *str);
+void	blockSort(int arr[], int n);
+void	selectionSort(int arr[], int n);
 
 
 #endif
