@@ -25,7 +25,7 @@ int	main(int argc, char** argv) // ./a 1 2 3
 	}
 
 	// now the sorting and print the swap push according to wiki, block sort is fast
-	selectionSort(array, argc-1);
+	selectionSort(array, argc-1); // need to find a way to use use those operations
 	printArray(array,argc -1);
 	return (0);	
 }
