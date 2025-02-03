@@ -1,0 +1,596 @@
+pb
+pb
+rb
+pb
+rb
+pb
+pb
+rb
+pb
+rb
+rb
+pb
+pb
+rb
+rb
+pb
+rrr
+pb
+rrr
+rra
+pb
+rra
+pb
+rra
+pb
+rrb
+rrb
+pb
+pb
+pb
+rb
+rb
+rb
+rb
+pb
+ra
+pb
+rrr
+rrr
+rra
+rra
+rra
+pb
+rrr
+rrr
+rrr
+rrr
+rrb
+pb
+pb
+rrr
+rrr
+rrr
+rrr
+rrr
+pb
+rrb
+rrb
+pb
+rrr
+rra
+pb
+ra
+ra
+rrb
+pb
+ra
+pb
+rrr
+rrr
+pb
+rrr
+rrb
+rrb
+rrb
+pb
+rrr
+rrr
+rrr
+rrr
+pb
+pb
+rrr
+rrr
+rrr
+rrb
+pb
+ra
+ra
+rrb
+pb
+rb
+rb
+pb
+rrr
+rrr
+rrr
+rrr
+pb
+rrr
+pb
+ra
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rr
+pb
+rb
+pb
+rrb
+rrb
+pb
+rrr
+rra
+rra
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rb
+rb
+pb
+rrr
+rrr
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+ra
+ra
+ra
+pb
+rr
+rr
+rb
+rb
+pb
+rr
+rr
+ra
+ra
+ra
+ra
+ra
+pb
+ra
+rrb
+rrb
+rrb
+rrb
+pb
+rrr
+rrr
+rrr
+pb
+rr
+rr
+ra
+ra
+ra
+pb
+ra
+rrb
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+pb
+ra
+rrb
+rrb
+pb
+rr
+rr
+ra
+pb
+rb
+pb
+rr
+rr
+rr
+rr
+rr
+rr
+rb
+pb
+rr
+rr
+ra
+pb
+rrb
+pb
+ra
+ra
+rrb
+rrb
+rrb
+rrb
+pb
+rrr
+rrr
+rrb
+rrb
+pb
+rrr
+pb
+ra
+ra
+ra
+ra
+ra
+ra
+rrb
+pb
+rr
+rr
+rb
+rb
+pb
+rr
+rr
+rr
+rb
+rb
+rb
+rb
+pb
+ra
+ra
+ra
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rrr
+rrb
+pb
+rrr
+rrb
+rrb
+pb
+rr
+pb
+pb
+rrr
+rrr
+rrr
+pb
+rrb
+pb
+rrr
+pb
+rr
+rr
+rr
+rb
+pb
+rrr
+rrr
+rrr
+rrr
+rra
+pb
+rrr
+rrr
+rrb
+rrb
+pb
+ra
+ra
+ra
+pb
+rr
+rb
+pb
+ra
+ra
+ra
+pb
+ra
+ra
+ra
+rrb
+rrb
+pb
+rr
+rr
+pb
+rrr
+rrr
+rrr
+rrr
+rrr
+rrb
+rrb
+pb
+ra
+pb
+rr
+ra
+ra
+ra
+ra
+ra
+ra
+pb
+rr
+rr
+rb
+rb
+pb
+rrr
+rrr
+rrr
+rrr
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+ra
+ra
+pb
+rrr
+rrr
+rra
+rra
+rra
+pb
+rrr
+rrr
+rrr
+rrb
+rrb
+rrb
+pb
+rrb
+rrb
+rrb
+pb
+pb
+rra
+rra
+rb
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+rrb
+rrb
+rrb
+rrb
+rrb
+rrb
+pb
+pb
+rrb
+pb
+pb
+sa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+pa
+pa
+rra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+rra
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+pa
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+ra
+----Printing Stack a (Top to Down)-------
+1 Previous: NULL Next: 2
+2 Previous: 1 Next: 3
+3 Previous: 2 Next: 4
+4 Previous: 3 Next: 5
+5 Previous: 4 Next: 6
+6 Previous: 5 Next: 7
+7 Previous: 6 Next: 8
+8 Previous: 7 Next: 9
+9 Previous: 8 Next: 10
+10 Previous: 9 Next: 11
+11 Previous: 10 Next: 12
+12 Previous: 11 Next: 13
+13 Previous: 12 Next: 14
+14 Previous: 13 Next: 15
+15 Previous: 14 Next: 16
+16 Previous: 15 Next: 17
+17 Previous: 16 Next: 18
+18 Previous: 17 Next: 19
+19 Previous: 18 Next: 20
+20 Previous: 19 Next: 21
+21 Previous: 20 Next: 22
+22 Previous: 21 Next: 23
+23 Previous: 22 Next: 24
+24 Previous: 23 Next: 25
+25 Previous: 24 Next: 26
+26 Previous: 25 Next: 27
+27 Previous: 26 Next: 28
+28 Previous: 27 Next: 29
+29 Previous: 28 Next: 30
+30 Previous: 29 Next: 31
+31 Previous: 30 Next: 32
+32 Previous: 31 Next: 33
+33 Previous: 32 Next: 34
+34 Previous: 33 Next: 35
+35 Previous: 34 Next: 36
+36 Previous: 35 Next: 37
+37 Previous: 36 Next: 38
+38 Previous: 37 Next: 39
+39 Previous: 38 Next: 40
+40 Previous: 39 Next: 41
+41 Previous: 40 Next: 42
+42 Previous: 41 Next: 43
+43 Previous: 42 Next: 44
+44 Previous: 43 Next: 45
+45 Previous: 44 Next: 46
+46 Previous: 45 Next: 47
+47 Previous: 46 Next: 48
+48 Previous: 47 Next: 49
+49 Previous: 48 Next: 50
+50 Previous: 49 Next: 51
+51 Previous: 50 Next: 52
+52 Previous: 51 Next: 53
+53 Previous: 52 Next: 54
+54 Previous: 53 Next: 55
+55 Previous: 54 Next: 56
+56 Previous: 55 Next: 57
+57 Previous: 56 Next: 58
+58 Previous: 57 Next: 59
+59 Previous: 58 Next: 60
+60 Previous: 59 Next: 61
+61 Previous: 60 Next: 62
+62 Previous: 61 Next: 63
+63 Previous: 62 Next: 64
+64 Previous: 63 Next: 65
+65 Previous: 64 Next: 66
+66 Previous: 65 Next: 67
+67 Previous: 66 Next: 68
+68 Previous: 67 Next: 69
+69 Previous: 68 Next: 70
+70 Previous: 69 Next: 71
+71 Previous: 70 Next: 72
+72 Previous: 71 Next: 73
+73 Previous: 72 Next: 74
+74 Previous: 73 Next: 75
+75 Previous: 74 Next: 76
+76 Previous: 75 Next: 77
+77 Previous: 76 Next: 78
+78 Previous: 77 Next: 79
+79 Previous: 78 Next: 80
+80 Previous: 79 Next: 81
+81 Previous: 80 Next: 82
+82 Previous: 81 Next: 83
+83 Previous: 82 Next: 84
+84 Previous: 83 Next: 85
+85 Previous: 84 Next: 86
+86 Previous: 85 Next: 87
+87 Previous: 86 Next: 88
+88 Previous: 87 Next: 89
+89 Previous: 88 Next: 90
+90 Previous: 89 Next: 91
+91 Previous: 90 Next: 92
+92 Previous: 91 Next: 93
+93 Previous: 92 Next: 94
+94 Previous: 93 Next: 95
+95 Previous: 94 Next: 96
+96 Previous: 95 Next: 97
+97 Previous: 96 Next: 98
+98 Previous: 97 Next: 99
+99 Previous: 98 Next: 100
+100 Previous: 99 Next: NULL
+
