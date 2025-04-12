@@ -1,5 +1,5 @@
 NAME = game
-SRC = test4.c
+SRC = test6.c
 # Add your additional source files here, e.g.:
 # $(addprefix src/, main.c utils.c draw.c map_parser.c path_checker.c game_utils.c map_parser_utils.c free.c)
 # $(addprefix gnl/, gnl.c gnl_utils.c)
@@ -8,21 +8,21 @@ SRC = test4.c
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc
-CCFLAGS = -Wextra -Wall -Werror -Imlx -Iincludes
+CCFLAGS = -Wextra -Wall -Werror -Imlx/minilibx -Iincludes
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	make -C mlx/ 
+	make -C mlx/minilibx
 # Build MiniLibX
-	$(CC) $(CCFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $(NAME)
+	$(CC) $(CCFLAGS) $^ -Lmlx/minilibx -lmlx -lXext -lX11 -lm -o $(NAME)
 
 %.o: %.c
 	$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
 	rm -f $(OBJ)
-	make clean -C mlx/
+	make clean -C mlx/minilibx
 
 fclean: clean
 	rm -f $(NAME)
