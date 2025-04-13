@@ -31,6 +31,7 @@ typedef struct s_game {
 // Function to render the map and player
 void render_map(t_game *game)
 {
+    mlx_clear_window(game->mlx, game->win); // Clear to avoid artifacts
     for (int i = 0; i < game->map_height; i++)
     {
         for (int j = 0; j < game->map_width; j++)
@@ -112,7 +113,15 @@ int handle_keypress(int keycode, t_game *game)
 // Function to handle window close
 int handle_close(t_game *game)
 {
+    mlx_destroy_image(game->mlx, game->wall_img);
+    mlx_destroy_image(game->mlx, game->background_img);
+    mlx_destroy_image(game->mlx, game->heart_img);
+    mlx_destroy_image(game->mlx, game->exit_img);
+    mlx_destroy_image(game->mlx, game->player_img);
     mlx_destroy_window(game->mlx, game->win);
+    for (int i = 0; i < game->map_height; i++)
+        free(game->map[i]);
+    free(game->map);
     exit(0);
     return (0);
 }
@@ -128,6 +137,11 @@ int main(int argc, char **argv)
     // Read and validate the map
     int width, height;
     char **map = read_map(argv[1], &width, &height);
+    if (!map)
+    {
+        write(2, "Error: Failed to read map\n", 26);
+        exit(1);
+    }
     validate_map(map, width, height);
 
     // Find player position and count heart
@@ -166,7 +180,16 @@ int main(int argc, char **argv)
     int tile_size = 32; // Assuming all images are 32x32 pixels
     game.img_width = tile_size;
     game.img_height = tile_size;
-    game.win = mlx_new_window(game.mlx, width * tile_size, height * tile_size, "so_long");
+    game.map_width = width;  // Set before window creation
+    game.map_height = height;
+    printf("Map: %dx%d, Tile: %dx%d, Window: %dx%d\n", 
+           game.map_width, game.map_height, 
+           tile_size, tile_size, 
+           game.map_width * tile_size, game.map_height * tile_size);
+    game.win = mlx_new_window(game.mlx, 
+                              game.map_width * tile_size, 
+                              game.map_height * tile_size, 
+                              "so_long");
     if (!game.win)
     {
         write(2, "Error: Failed to create window\n", 31);
@@ -174,41 +197,49 @@ int main(int argc, char **argv)
     }
 
     // Load images (adjust paths based on your xpm/ directory)
-    game.wall_img = mlx_xpm_file_to_image(game.mlx, "./xpm/wall.xpm", &game.img_width, &game.img_height);
-    if (!game.wall_img)
+    int img_width = tile_size;
+    int img_height = tile_size;
+    game.wall_img = mlx_xpm_file_to_image(game.mlx, "./xpm/wall.xpm", &img_width, &img_height);
+    if (!game.wall_img || img_width != tile_size || img_height != tile_size)
     {
-        write(2, "Error: Failed to load wall.xpm\n", 31);
+        write(2, "Error: Failed to load wall.xpm or wrong size\n", 45);
         exit(1);
     }
-    game.background_img = mlx_xpm_file_to_image(game.mlx, "./xpm/background.xpm", &game.img_width, &game.img_height);
-    if (!game.background_img)
+    img_width = tile_size;
+    img_height = tile_size;
+    game.background_img = mlx_xpm_file_to_image(game.mlx, "./xpm/background.xpm", &img_width, &img_height);
+    if (!game.background_img || img_width != tile_size || img_height != tile_size)
     {
-        write(2, "Error: Failed to load background.xpm\n", 32);
+        write(2, "Error: Failed to load background.xpm or wrong size\n", 50);
         exit(1);
     }
-    game.heart_img = mlx_xpm_file_to_image(game.mlx, "./xpm/heart.xpm", &game.img_width, &game.img_height);
-    if (!game.heart_img)
+    img_width = tile_size;
+    img_height = tile_size;
+    game.heart_img = mlx_xpm_file_to_image(game.mlx, "./xpm/heart.xpm", &img_width, &img_height);
+    if (!game.heart_img || img_width != tile_size || img_height != tile_size)
     {
-        write(2, "Error: Failed to load heart.xpm\n", 33);
+        write(2, "Error: Failed to load heart.xpm or wrong size\n", 46);
         exit(1);
     }
-    game.exit_img = mlx_xpm_file_to_image(game.mlx, "./xpm/exit.xpm", &game.img_width, &game.img_height);
-    if (!game.exit_img)
+    img_width = tile_size;
+    img_height = tile_size;
+    game.exit_img = mlx_xpm_file_to_image(game.mlx, "./xpm/exit.xpm", &img_width, &img_height);
+    if (!game.exit_img || img_width != tile_size || img_height != tile_size)
     {
-        write(2, "Error: Failed to load exit.xpm\n", 31);
+        write(2, "Error: Failed to load exit.xpm or wrong size\n", 44);
         exit(1);
     }
-    game.player_img = mlx_xpm_file_to_image(game.mlx, "./xpm/player.xpm", &game.img_width, &game.img_height);
-    if (!game.player_img)
+    img_width = tile_size;
+    img_height = tile_size;
+    game.player_img = mlx_xpm_file_to_image(game.mlx, "./xpm/player.xpm", &img_width, &img_height);
+    if (!game.player_img || img_width != tile_size || img_height != tile_size)
     {
-        write(2, "Error: Failed to load player.xpm\n", 33);
+        write(2, "Error: Failed to load player.xpm or wrong size\n", 47);
         exit(1);
     }
 
     // Set game state
     game.map = map;
-    game.map_width = width;
-    game.map_height = height;
     game.player_x = player_x;
     game.player_y = player_y;
     game.heart = heart;
