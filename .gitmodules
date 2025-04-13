@@ -1,6 +1,6 @@
 [submodule "so_long/mlxx"]
 	path = so_long/mlxx
-	url = https://github.com/42Paris/minilibx-linux
+	url = git@github.com:42paris/minilibx-linux.git
 [submodule "printf/ft_printf_tester"]
 	path = printf/ft_printf_tester
 	url = https://github.com/paulo-santana/ft_printf_tester.git
