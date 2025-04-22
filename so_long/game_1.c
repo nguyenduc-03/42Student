@@ -11,42 +11,28 @@
 
 static void	print_msg(const char *p, int m, int e)
 {
-	char	b[12];
-	char	msg[40];
-	char	c;
-	int		i;
-	int		j;
-	int		t;
-	int		lp;
+	char b[12];
+	char msg[40];
+	int  i; int j; int t; int lp;
 
-	i = 0;
-	t = m;
-	if (t == 0)
-		b[i++] = '0';
-	while (t /= 10)
-		b[i++] = '0' + (t % 10);
+	i = 0; t = m;
+	if (t == 0) b[i++] = '0';
+	while (t) { b[i++] = '0' + (t % 10); t /= 10; }
 	j = 0;
-	while (j++ < i / 2)
-	{
-		c = b[j];
-		b[j] = b[i - 1 - j];
-		b[i - 1 - j] = c;
-	}
+	while (j < i/2) { char c = b[j]; b[j] = b[i-1-j]; b[i-1-j] = c; j++; }
 	lp = 0;
-	while (p[lp++]) 
-		msg[lp] = p[lp];
+	while (p[lp]) { msg[lp] = p[lp]; lp++; }
 	t = 0;
-	while (t++ < i) 
-		msg[lp + t] = b[t];
-	msg[lp + t] = '\n';
+	while (t < i) { msg[lp+t] = b[t]; t++; }
+	msg[lp+t] = '\n';
 	write(1, msg, lp + t + 1);
-	if (e)
-		exit(0);
+	if (e) exit(0);
 }
 
 static	void	move_player(t_game *g, int nx, int ny)
 {
-	char n;
+	char	n;
+
 	if (nx < 0 || nx >= g->map_width || ny < 0 || ny >= g->map_height)
 		return ;
 	n = g->map[ny][nx];
@@ -54,9 +40,12 @@ static	void	move_player(t_game *g, int nx, int ny)
 		return ;
 	if (n == '0' || n == 'C')
 	{
-		if (n == 'C') g->heart--;
+		if (n == 'C')
+			g->heart--;
 		g->map[ny][nx] = '0';
-		g->player_x = nx; g->player_y = ny; g->moves++;
+		g->player_x = nx;
+		g->player_y = ny;
+		g->moves++;
 		print_msg("Moves: ", g->moves, 0);
 		render_map(g);
 	}
@@ -84,7 +73,7 @@ int	handle_keypress(int keycode, t_game *g)
 	return (0);
 }
 
-void	start_game(char **m, int w, int h, int px, int py, int hearts)
+void	start_game(char **m, int i[5])
 {
 	t_game	g;
 
@@ -92,20 +81,26 @@ void	start_game(char **m, int w, int h, int px, int py, int hearts)
 	if (!g.mlx)
 		write(2, "Error: MLX init failed\n", 24);
 	g.map = m;
-	g.map_width = w;
-	g.map_height = h;
+	g.map_width = i[0];
+	g.map_height = i[1];
 	g.img_width = 32;
 	g.img_height = 32;
-	g.win = mlx_new_window(g.mlx, w * 32, h * 32, "so_long");
+	g.win = mlx_new_window(g.mlx, i[0] * 32, i[1] * 32, "so_long");
 	if (!g.win)
 		write(2, "Error: Window creation failed\n", 30);
-	g.player_x = px;
-	g.player_y = py;
-	g.heart	= hearts;
-	g.moves	= 0;
+	g.player_x = i[2];
+	g.player_y = i[3];
+	g.heart = i[4];
+	g.moves = 0;
 	load_images(&g);
 	render_map(&g);
 	mlx_hook(g.win, 2, 1L << 0, handle_keypress, &g);
 	mlx_hook(g.win, 17, 0, handle_close, &g);
 	mlx_loop(g.mlx);
 }
+
+/*Original Variable | New Notation (i[index]) | Description
+i | i[0] | Used for index while building number string
+j | i[1] | Used in swapping
+t | i[2] | Temp for number, loop, etc.
+lp | i[3] | Length pointer for message prefix */

@@ -34,22 +34,17 @@ static void	scan_map_vars(char **map, int width, int height,
 int	main(int argc, char **argv)
 {
 	char	**map;
-	int		width;
-	int		height;
-	int		player_x;
-	int		player_y;
-	int		hearts;
+	int		i[5];
 
 	if (argc != 2)
 		write(2, "Usage: ./so_long <map_file>\n", 27);
-	map = read_map(argv[1], &width, &height);
+	map = read_map(argv[1], &i[0], &i[1]);
 	if (!map)
 		write(2, "Error: Failed to read map\n", 25);
-	validate_map(map, width, height);
-	player_x = -1;
-	player_y = -1;
-	scan_map_vars(map, width, height, &player_x, &player_y, &hearts);
-	start_game(map, width, height, player_x, player_y, hearts);
+	validate_map(map, i[0], i[1]);
+	i[2] = -1;
+	i[3] = -1;
+	scan_map_vars(map, i[0], i[1], &i[2], &i[3], &i[4]);
+	start_game(map,i);
 	return (0);
 }
-
