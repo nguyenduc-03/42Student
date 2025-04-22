@@ -14,6 +14,4 @@ char **read_map(const char *filename, int *width, int *height);
 // Exits with an error message if invalid, otherwise returns void
 void validate_map(char **map, int width, int height);
 
-
-
 #endif
