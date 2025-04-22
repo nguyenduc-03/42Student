@@ -6,12 +6,8 @@
 
 #define MAX_ROWS 1000
 #define MAX_COLS 1000
-
+	
 // Structure to represent a position in the grid
-typedef struct {
-    int row;
-    int col;
-} Position;
 
 // Validates the map's structure
 static void validate_structure(char **map, int rows, int cols, int *p_row, int *p_col)

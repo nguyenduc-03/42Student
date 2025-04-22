@@ -1,5 +1,5 @@
 NAME = game
-SRC = test5.c check_map.c
+SRC = main.c game_1.c game_2.c check_map.c
 OBJ := $(SRC:%.c=%.o)
 
 CC = gcc
