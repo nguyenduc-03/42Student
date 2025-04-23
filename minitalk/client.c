@@ -1,59 +1,64 @@
-
 #include "minitalk.h"
 
-void	send_msg(int server_pid, char msg)
+static int	ft_atoi(const char *str)
 {
-	int	bit;
-
-	bit = 7;
-	while (bit >= 0)
-	{
-		if (msg >> bit & 1)
-			kill(server_pid, SIGUSR1);
-		else
-			kill(server_pid, SIGUSR2);
-		usleep(400);
-		bit--;
-	}
-}
-
-int	check_input(int ac, char **av)
-{
-	int	correct_input;
-
-	correct_input = 0;
-	if (ac != 3)
-		ft_printf("%s\n", "Please, verify the input → ./client <PID> <Message>");
-	else if (!ft_isstringdigit(av[1]))
-	{
-		ft_printf("%s", "Please, verify the PID");
-		ft_printf("%s\n", " → It should contain only numbers.");
-	}
-	else if (*av[2] == 0)
-		ft_printf("%s\n", "Please, insert a non-empty message.");
-	else
-		correct_input = 1;
-	return (correct_input);
-}
-
-int	main(int argc, char **argv)
-{
-	int		i;
-	int		server_pid;
-	char	*msg;
+	int	i;
+	int	sign;
+	int	result;
 
 	i = 0;
-	if (check_input(argc, argv) == 1)
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		server_pid = ft_atoi(argv[1]);
-		msg = ft_strdup(argv[2]);
-		while (msg[i] != '\0')
-		{
-			send_msg(server_pid, msg[i]);
-			i++;
-		}
-		free(msg);
-		send_msg(server_pid, '\n');
+		if (str[i] == '-')
+			sign = -1;
+		i++;
 	}
+	result = 0;
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - 48);
+		i++;
+	}
+	return (sign * result);
+}
+
+static void	send_signal(pid_t id, char *message)
+{
+	int		i;
+	int		j;
+	char	result;
+
+	i = 0;
+	while (message[i] != '\0')
+	{
+		j = 7;
+		while (j >= 0)
+		{
+			result = (message[i] >> j) & 1;
+			if (result == 1)
+				kill(id, SIGUSR1);
+			else if (result == 0)
+				kill(id, SIGUSR2);
+			usleep(142);
+			j--;
+		}
+		i++;
+	}
+}
+
+int	main(int argc, char *argv[])
+{
+	pid_t	server_id;
+
+	if (argc == 3)
+	{
+		server_id = ft_atoi(argv[1]);
+		send_signal(server_id, argv[2]);
+	}
+	else
+		write(1, "the requested number of arguments was not entered", 50);
 	return (0);
 }
