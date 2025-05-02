@@ -9,25 +9,58 @@
 #define KEY_A XK_a
 #define KEY_D XK_d
 
+static	int	fmt_num(char *buf, int n)
+{
+	int		vars[3];
+	char	c;
+
+	vars[0] = 0;
+	vars[1] = n;
+	if (!vars[1])
+		buf[vars[0]++] = '0';
+	while (vars[1])
+	{
+		buf[vars[0]++] = '0' + (vars[1] % 10);
+		vars[1] /= 10;
+	}
+	vars[2] = 0;
+	while (vars[2] < vars[0] / 2)
+	{
+		c = buf[vars[2]];
+		buf[vars[2]] = buf[vars[0] - 1 - vars[2]];
+		buf[vars[0] - 1 - vars[2]] = c;
+		vars[2]++;
+	}
+	return (vars[0]);
+}
+
 static void	print_msg(const char *p, int m, int e)
 {
-	char b[12];
-	char msg[40];
-	int  i; int j; int t; int lp;
+	char	num[12];
+	char	msg[40];
+	int		vars[4];
 
-	i = 0; t = m;
-	if (t == 0) b[i++] = '0';
-	while (t) { b[i++] = '0' + (t % 10); t /= 10; }
-	j = 0;
-	while (j < i/2) { char c = b[j]; b[j] = b[i-1-j]; b[i-1-j] = c; j++; }
-	lp = 0;
-	while (p[lp]) { msg[lp] = p[lp]; lp++; }
-	t = 0;
-	while (t < i) { msg[lp+t] = b[t]; t++; }
-	msg[lp+t] = '\n';
-	write(1, msg, lp + t + 1);
-	if (e) exit(0);
+	vars[0] = 0;
+	while (p[vars[0]])
+	{
+		msg[vars[0]] = p[vars[0]];
+		vars[0]++;
+	}
+	vars[1] = fmt_num(num, m);
+	vars[2] = 0;
+	while (vars[2] < vars[1])
+	{
+		msg[vars[0] + vars[2]] = num[vars[2]];
+		vars[2]++;
+	}
+	vars[3] = vars[0] + vars[1];
+	msg[vars[3]] = '\n';
+	vars[3]++;
+	write(1, msg, vars[3]);
+	if (e)
+		exit(0);
 }
+
 
 static	void	move_player(t_game *g, int nx, int ny)
 {

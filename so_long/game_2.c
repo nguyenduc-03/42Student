@@ -2,7 +2,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static void	*load_image(t_game *g, const char *p)
+static	void	*load_image(t_game *g, const char *p)
 {
 	int		w;
 	int		h;
