@@ -61,7 +61,6 @@ static void	print_msg(const char *p, int m, int e)
 		exit(0);
 }
 
-
 static	void	move_player(t_game *g, int nx, int ny)
 {
 	char	n;
