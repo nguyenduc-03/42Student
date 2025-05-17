@@ -1,0 +1,62 @@
+#include "check_map.h"
+#include <fcntl.h>
+#include <unistd.h>
+#include <stdlib.h>
+
+int	get_height(char *path)
+{
+	int		fd;
+	int		height;
+	char	c;
+	int		ret;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		exit(EXIT_FAILURE);
+	height = 0;
+	ret = read(fd, &c, 1);
+	while (ret > 0)
+	{
+		if (c == '\n')
+			height++;
+		ret = read(fd, &c, 1);
+	}
+	if (ret < 0)
+		exit(EXIT_FAILURE);
+	close(fd);
+	return (height + 1);
+}
+
+int	get_width(char *path)
+{
+	int		fd;
+	int		width;
+	char	c;
+	int		ret;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		exit(EXIT_FAILURE);
+	width = 0;
+	ret = read(fd, &c, 1);
+	while (ret > 0 && c != '\n')
+	{
+		width++;
+		ret = read(fd, &c, 1);
+	}
+	close(fd);
+	return (width);
+}
+
+void	free_map(t_map *map)
+{
+	int	i;
+
+	i = 0;
+	while (i < map->height)
+	{
+		free(map->grid[i]);
+		i++;
+	}
+	free(map->grid);
+}

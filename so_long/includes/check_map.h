@@ -1,17 +1,37 @@
 #ifndef CHECK_MAP_H
-#define CHECK_MAP_H
+# define CHECK_MAP_H
 
-typedef struct {
-	int row;
-	int col;
-} Position;
+typedef struct  s_map
+{
+	char	**grid;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	int		count_c;
+	int		count_e;
+}			t_map;
 
-// Function to read the map from a file
-// Returns a 2D array (null-terminated strings), sets width and height via pointers
-char **read_map(const char *filename, int *width, int *height);
+typedef struct  s_bfs
+{
+	int	*visited;
+	int	*queue;
+	int	head;
+	int	tail;
+	int	found_c;
+	int	exit_reached;
+}	t_bfs;
 
-// Function to validate the map
-// Exits with an error message if invalid, otherwise returns void
-void validate_map(char **map, int width, int height);
+
+char	**read_map( char *filename, int *width, int *height);
+void	validate_map(char **grid, int width, int height);
+int		get_height(char *path);
+int		get_width(char *path);
+void	read_map_file(char *path, t_map *map);
+void	validate_rectangular(t_map *map);
+void	validate_borders(t_map *map);
+void	validate_chars(t_map *map);
+void	validate_paths(t_map *map);
+void	free_map(t_map *map);
 
 #endif
