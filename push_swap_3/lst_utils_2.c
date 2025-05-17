@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lst_utils_2.c                                      :+:      :+:    :+:   */
+/*   lst_utils_2.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 13:16:13 by yogun             #+#    #+#             */
-/*   Updated: 2022/09/01 20:31:05 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // This function checks the index of a number
 // 	 in the stack.

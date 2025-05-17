@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_args.c                                     :+:      :+:    :+:   */
+/*   ft_list_args.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 18:12:47 by yogun             #+#    #+#             */
-/*   Updated: 2022/08/03 20:55:19 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:22 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:22 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // While arguments are valid, we start to add them 
 // into stack here one by one with while loop.

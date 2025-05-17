@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   solver_utils_ba.c                                  :+:      :+:    :+:   */
+/*   solver_utils_ba.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 15:53:10 by yogun             #+#    #+#             */
-/*   Updated: 2022/08/09 11:23:11 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // This function calculates the required amount of rotation.
 // Calculations are done for ra+rb case.

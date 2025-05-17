@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stack_new.c                                     :+:      :+:    :+:   */
+/*   ft_stack_new.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/22 10:29:05 by yogun             #+#    #+#             */
-/*   Updated: 2022/09/01 12:02:55 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // Creates new stack node with given number.
 t_stack	*ft_stack_new(int content)

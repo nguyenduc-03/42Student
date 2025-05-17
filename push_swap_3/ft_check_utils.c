@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_utils.c                                   :+:      :+:    :+:   */
+/*   ft_check_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 12:20:01 by yogun             #+#    #+#             */
-/*   Updated: 2022/08/03 20:55:02 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:22 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:22 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 //chec if the chracter is negative
 int	sign(int c)

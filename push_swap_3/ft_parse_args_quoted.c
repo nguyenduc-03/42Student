@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parse_args_quoted.c                             :+:      :+:    :+:   */
+/*   ft_parse_args_quoted.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 12:29:31 by yogun             #+#    #+#             */
-/*   Updated: 2022/09/01 17:33:42 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:22 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:22 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // This function free the string which is 
 // the integer values in between quotes.
@@ -36,11 +36,8 @@ t_stack	*ft_parse_args_quoted(char **argv)
 {
 	t_stack	*stack_a;
 	char	**tmp;
-	int		i;
-	int		j;
 
 	stack_a = NULL;
-	i = 0;
 	tmp = ft_split(argv[1], 32);
 	list_args(tmp, &stack_a);
 	ft_freestr(tmp);

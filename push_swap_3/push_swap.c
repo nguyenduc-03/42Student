@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                              :+:      :+:    :+:   */
+/*   push_swap.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
-/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:22 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:22 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	ft_add_back(t_list **alst, t_list *new)
+int	main(int argc, char **argv)
 {
-	t_list	*tmp;
+	t_stack	*a;
 
-	if (alst)
+	a = ft_process(argc, argv);
+	if (!a || ft_checkdup(a))
 	{
-		if (*alst == NULL)
-			*alst = new;
-		else
-		{
-			tmp = ft_lstlast(*(alst));
-			tmp->next = new;
-		}
+		ft_free(&a);
+		ft_error();
 	}
+	if (!ft_checksorted(a))
+		ft_sort(&a);
+	ft_free(&a);
+	return (0);
 }

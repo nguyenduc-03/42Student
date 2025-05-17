@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/08/03 20:46:09 by yogun             #+#    #+#             */
-/*   Updated: 2022/09/01 18:00:32 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // This function is the second part of the ft_check function.
 void	ft_check_sub(t_stack **a, t_stack **b, char *line)

@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free.c                                          :+:      :+:    :+:   */
+/*   ft_check_sorted.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 12:17:58 by yogun             #+#    #+#             */
-/*   Updated: 2022/08/08 20:31:02 by yogun            ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:22 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:22 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
-// This function frees the stack.
-void	ft_free(t_stack **lst)
+// This function checks if the stack is sorted.
+int	ft_checksorted(t_stack *stack_a)
 {
-	t_stack	*tmp;
+	int	i;
 
-	if (!lst)
-		return ;
-	while (*lst)
+	i = stack_a->nbr;
+	while (stack_a)
 	{
-		tmp = (*lst)->next;
-		(*lst)->nbr = 0;
-		free(*lst);
-		*lst = tmp;
+		if (i > stack_a->nbr)
+			return (0);
+		i = stack_a->nbr;
+		stack_a = stack_a->next;
 	}
+	return (1);
 }

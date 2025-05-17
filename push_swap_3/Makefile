@@ -3,82 +3,80 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yogun <yogun@student.42heilbronn.de>       +#+  +:+       +#+         #
+#    By: ducnguye <ducnguyen@student.42berlin.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/07/23 13:48:18 by yogun             #+#    #+#              #
-#    Updated: 2022/09/01 20:23:46 by yogun            ###   ########.fr        #
+#    Created: 2025/05/17 22:31:25 by ducnguye          #+#    #+#              #
+#    Updated: 2025/05/17 22:31:26 by ducnguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
-CC = gcc
-RM = rm -f
-FLAGS = -Wall -Wextra -Werror
-LIBFTDIR = libft/
-OBJ_DIR = obj/
-BONUS = checker
-SRC_DIR = srcs/
+NAME        := push_swap
+CHECKER     := checker
 
-SRC_1 = srcs/push_swap/push_swap.c \
+CC          := gcc
+CFLAGS      := -Wall -Wextra -Werror
+RM          := rm -f
 
-SRC_2 =	srcs/push_swap/algorithm.c \
-		srcs/push_swap/ft_add_back.c \
-		srcs/push_swap/ft_stack_new.c \
-		srcs/push_swap/ft_check_utils.c \
-		srcs/push_swap/ft_parse.c \
-		srcs/push_swap/solver_utils_ab.c \
-		srcs/push_swap/solver_utils_ba.c \
-		srcs/push_swap/ft_rotate_and_push.c \
-		srcs/push_swap/operations.c \
-		srcs/push_swap/operations_2.c \
-		srcs/push_swap/operations_3.c \
-		srcs/push_swap/ft_check_dup.c \
-		srcs/push_swap/ft_check_sorted.c \
-		srcs/push_swap/ft_error_print.c \
-		srcs/push_swap/ft_free.c \
-		srcs/push_swap/lst_utils.c \
-		srcs/push_swap/lst_utils_2.c \
-		srcs/push_swap/ft_parse_args_quoted.c \
-		srcs/push_swap/ft_list_args.c \
-		srcs/push_swap/ft_check_args.c \
-		srcs/push_swap/ft_sort_big.c \
-		srcs/push_swap/ft_sort_three.c \
-		srcs/push_swap/ft_rotate_type.c \
-		
-BONUS_SRC = srcs/checker/checker.c \
-			srcs/checker/checker_utils.c \
-			
+LIBFT_DIR   := libft
+LIBFT_LIB   := -L $(LIBFT_DIR) -lft
 
-OBJ_1 = ${SRC_1:.c=.o}
-OBJ_2 = ${SRC_2:.c=.o}
+UTILS_SRCS := \
+	algorithm.c \
+	ft_add_back.c \
+	ft_stack_new.c \
+	ft_check_utils.c \
+	ft_parse.c \
+	solver_utils_ab.c \
+	solver_utils_ba.c \
+	ft_rotate_and_push.c \
+	operations.c \
+	operations_2.c \
+	operations_3.c \
+	ft_check_dup.c \
+	ft_check_sorted.c \
+	ft_error_print.c \
+	ft_free.c \
+	lst_utils.c \
+	lst_utils_2.c \
+	ft_parse_args_quoted.c \
+	ft_list_args.c \
+	ft_check_args.c \
+	ft_sort_big.c \
+	ft_sort_three.c \
+	ft_rotate_type.c
 
-BONUS_OBJ =${BONUS_SRC:.c=.o}
+SRC_PUSH    := push_swap.c $(UTILS_SRCS)
+SRC_CHECKER := checker.c checker_utils.c $(UTILS_SRCS)
 
-INCLUDE = -L ./libft -lft
+OBJ_PUSH    := $(SRC_PUSH:.c=.o)
+OBJ_CHECKER := $(SRC_CHECKER:.c=.o)
 
-.c.o:
-	${CC} -c $< -o ${<:.c=.o}
+INCLUDES    :=
 
-${NAME}: ${OBJ_1} ${OBJ_2}
-	make -C $(LIBFTDIR)
-	${CC} ${FLAGS} ${OBJ_1} ${OBJ_2} -o ${NAME} ${INCLUDE}
+.PHONY: all bonus clean fclean re
 
-${BONUS}: ${OBJ_2} ${BONUS_OBJ} 
-	make -C $(LIBFTDIR)
-	${CC} ${FLAGS} ${BONUS_OBJ} ${OBJ_2} -o ${BONUS} ${INCLUDE}
+all: $(NAME) $(CHECKER)
 
-all: ${NAME} ${BONUS}
+$(LIBFT_DIR)/libft.a:
+	@$(MAKE) -C $(LIBFT_DIR)
 
-bonus: ${BONUS} 
+%.o: %.c
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+$(NAME): $(LIBFT_DIR)/libft.a $(OBJ_PUSH)
+	$(CC) $(CFLAGS) $(OBJ_PUSH) -o $@ $(LIBFT_LIB)
+
+$(CHECKER): $(LIBFT_DIR)/libft.a $(OBJ_CHECKER)
+	$(CC) $(CFLAGS) $(OBJ_CHECKER) -o $@ $(LIBFT_LIB)
+
+bonus: $(CHECKER)
 
 clean:
-	${RM} ${OBJ_1} ${OBJ_2} ${BONUS_OBJ} ${NAME} ${BONUS}
-	@cd $(LIBFTDIR) && $(MAKE) clean
+	$(RM) $(OBJ_PUSH) $(OBJ_CHECKER)
+	@$(MAKE) -C $(LIBFT_DIR) clean
 
 fclean: clean
-	${RM} ${NAME}
-	@cd $(LIBFTDIR) && $(MAKE) fclean
+	$(RM) $(NAME) $(CHECKER)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
 
-re: clean all
-
-.PHONY: all clean fclean re bonus
+re: fclean all

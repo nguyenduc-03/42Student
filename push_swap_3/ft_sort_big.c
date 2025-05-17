@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_big.c                                      :+:      :+:    :+:   */
+/*   ft_sort_big.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de> +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/31 14:38:42 by yogun             #+#    #+#             */
-/*   Updated: 2025/05/16 00:41:33 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/17 22:47:21 by ducnguye    +#+    #+#             */
+/*   Updated: 2025/05/17 22:47:21 by ducnguye    ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 // This function sort and push stacks until 3 members left behind.
 void	ft_sort_b_till_3(t_stack **stack_a, t_stack **stack_b)
@@ -118,6 +118,6 @@ void	ft_sort(t_stack **stack_a)
 		{
 			while ((*stack_a)->nbr != ft_min(*stack_a))
 				ft_rra(stack_a, 0);
-		}			
-	}	
+		}
+	}
 }
