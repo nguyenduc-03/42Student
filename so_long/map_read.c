@@ -34,7 +34,7 @@ static void	read_line(int fd, t_map *map, int i)
 		exit(EXIT_FAILURE);
 }
 
-static void	fill_map(char *path, t_map *map)
+static void	fill_map(const char *path, t_map *map)
 {
 	int	fd;
 	int	i;
@@ -51,7 +51,7 @@ static void	fill_map(char *path, t_map *map)
 	close(fd);
 }
 
-void	read_map_file(char *path, t_map *map)
+void	read_map_file(const char *path, t_map *map)
 {
 	map->height = get_height(path);
 	map->width = get_width(path);

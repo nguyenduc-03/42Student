@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-int	get_height(char *path)
+int	get_height(const char *path)
 {
 	int		fd;
 	int		height;
@@ -27,7 +27,7 @@ int	get_height(char *path)
 	return (height + 1);
 }
 
-int	get_width(char *path)
+int	get_width(const char *path)
 {
 	int		fd;
 	int		width;

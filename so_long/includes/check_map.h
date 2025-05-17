@@ -23,11 +23,11 @@ typedef struct  s_bfs
 }	t_bfs;
 
 
-char	**read_map( char *filename, int *width, int *height);
+char	**read_map(const char *filename, int *width, int *height);
 void	validate_map(char **grid, int width, int height);
-int		get_height(char *path);
-int		get_width(char *path);
-void	read_map_file(char *path, t_map *map);
+int		get_height(const char *path);
+int		get_width(const char *path);
+void	read_map_file(const char *path, t_map *map);
 void	validate_rectangular(t_map *map);
 void	validate_borders(t_map *map);
 void	validate_chars(t_map *map);

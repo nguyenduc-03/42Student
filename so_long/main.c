@@ -2,29 +2,32 @@
 #include "game.h"
 #include <unistd.h>
 
-static void	scan_map_vars(char **map, int *i)
+static void	scan_map_vars(char **map, int width, int height,
+				int *px, int *py, int *hearts)
 {
 	int	x;
 	int	y;
 
-	i[4] = 0;
-	y = -1;
-	while (++y < i[1])
+	*hearts = 0;
+	y = 0;
+	while (y < height)
 	{
-		x = -1;
-		while (++x < i[0])
+		x = 0;
+		while (x < width)
 		{
 			if (map[y][x] == 'P')
 			{
-				i[2] = x;
-				i[3] = y;
+				*px = x;
+				*py = y;
 				map[y][x] = '0';
 			}
 			else if (map[y][x] == 'C')
-				i[4]++;
+				(*hearts)++;
+			x++;
 		}
+		y++;
 	}
-	if (i[2] < 0 || i[3] < 0)
+	if (*px < 0 || *py < 0)
 		write(2, "Error: No player start position\n", 33);
 }
 
@@ -47,7 +50,7 @@ int	main(int argc, char **argv)
 	validate_map(map, i[0], i[1]);
 	i[2] = -1;
 	i[3] = -1;
-	scan_map_vars(map, i);
+	scan_map_vars(map, i[0], i[1], &i[2], &i[3], &i[4]);
 	start_game(map, i);
 	return (0);
 }

@@ -1,7 +1,7 @@
 #include "check_map.h"
 #include <stdlib.h>
 
-char	**read_map(char *filename, int *width, int *height)
+char	**read_map(const char *filename, int *width, int *height)
 {
 	t_map	m;
 
