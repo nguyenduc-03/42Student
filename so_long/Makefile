@@ -1,4 +1,4 @@
-NAME   = game
+NAME   = so_long
 SRC    = srcs/main.c \
 		srcs/game_1.c \
 		srcs/game_2.c \

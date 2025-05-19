@@ -56,8 +56,6 @@ void	validate_chars(t_map *map)
 	map->count_c = 0;
 	map->count_e = 0;
 	scan_map(map);
-	printf("player_x %d count_e %d count_c %d\n",
-		map->player_x, map->count_e, map->count_c);
 	if (map->player_x < 0 || map->count_e != 1 || map->count_c < 1)
 		print_error("validate_chars");
 }
