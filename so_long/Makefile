@@ -1,13 +1,16 @@
 NAME   = game
-SRC    = main.c \
-         game_1.c \
-         game_2.c \
-         check_map.c \
-         map_utils.c \
-         map_read.c \
-         map_validate.c \
-         char_validate.c \
-         path_validate.c
+SRC    = srcs/main.c \
+		srcs/game_1.c \
+		srcs/game_2.c \
+		srcs/check_map.c \
+		srcs/map_utils.c \
+		srcs/map_read.c \
+		srcs/map_validate.c \
+		srcs/char_validate.c \
+		srcs/path_validate.c
+
+OBJ    = $(SRC:.c=.o)
+
 
 OBJ    = $(SRC:.c=.o)
 
