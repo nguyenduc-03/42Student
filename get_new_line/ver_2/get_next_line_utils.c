@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   $TM_FILENAME                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: codespace <codespace@student.42.fr>        +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:04:10 by codespace         #+#    #+#             */
-/*   Updated: 2024/12/09 12:04:16 by codespace        ###   ########.fr       */
+/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "get_next_line.h"
 
 size_t	ft_strlen(const char *s)

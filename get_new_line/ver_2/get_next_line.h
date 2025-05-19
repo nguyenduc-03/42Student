@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   $TM_FILENAME                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/09 12:04:53 by codespace         #+#    #+#             */
-/*   Updated: 2024/12/11 12:16:23 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 

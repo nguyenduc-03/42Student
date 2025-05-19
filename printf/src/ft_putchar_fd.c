@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   $TM_FILENAME                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/11 15:03:01 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/01/11 15:03:02 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "ft_printf.h"
 
 int	ft_putchar_fd(char c, int fd)

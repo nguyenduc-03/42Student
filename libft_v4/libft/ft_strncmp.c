@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   $TM_FILENAME                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/04 13:27:10 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 14:59:30 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 int	ft_strncmp(const char *s1, const char *s2, size_t n)

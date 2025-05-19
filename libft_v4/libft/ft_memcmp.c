@@ -1,15 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcmp.c                                        :+:      :+:    :+:   */
+/*   $TM_FILENAME                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/13 11:18:59 by ducnguye          #+#    #+#             */
-/*   Updated: 2024/11/13 15:13:50 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 #include "libft.h"
 
 int	ft_memcmp(const void *str1, const void *str2, size_t n)
