@@ -1,8 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_1.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 17:08:30 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/19 17:08:30 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "game.h"
 #include "check_map.h"
-#include <unistd.h>
-#include <stdlib.h>
-#include <X11/keysym.h>
 
 #define KEY_ESC XK_Escape
 #define KEY_W XK_w
@@ -94,8 +103,7 @@ int	handle_keypress(int keycode, t_game *g)
 	x = g->player_x;
 	y = g->player_y;
 	if (keycode == KEY_ESC)
-		{print_error("handle_keypress");
-			exit(0);}
+		exit(0);
 	else if (keycode == KEY_W)
 		move_player(g, x, y - 1);
 	else if (keycode == KEY_S)
@@ -113,7 +121,7 @@ void	start_game(char **m, int i[5])
 
 	g.mlx = mlx_init();
 	if (!g.mlx)
-		write(2, "Error: MLX init failed\n", 24);
+		print_error("MLX init failed");
 	g.map = m;
 	g.map_width = i[0];
 	g.map_height = i[1];
@@ -121,7 +129,7 @@ void	start_game(char **m, int i[5])
 	g.img_height = 32;
 	g.win = mlx_new_window(g.mlx, i[0] * 32, i[1] * 32, "so_long");
 	if (!g.win)
-		write(2, "Error: Window creation failed\n", 30);
+		print_error("Window creation failed\n");
 	g.player_x = i[2];
 	g.player_y = i[3];
 	g.heart = i[4];

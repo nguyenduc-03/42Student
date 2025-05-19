@@ -1,6 +1,8 @@
 #ifndef GAME_H
 # define GAME_H
-
+# include <unistd.h>
+# include <stdlib.h>
+# include <X11/keysym.h>
 # include <mlx.h>
 
 typedef struct s_game {

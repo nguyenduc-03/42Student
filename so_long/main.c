@@ -6,6 +6,7 @@
 
 void	print_error(const char *msg)
 {
+	write(2,"Error:",6);
 	while (*msg)
 		write(2, msg++, 1);
 	write(2, "\n", 1);

@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   char_validate.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 17:07:52 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/19 17:07:52 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "check_map.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 static void	check_char(t_map *map, int i, int j)
 {
@@ -19,9 +29,7 @@ static void	check_char(t_map *map, int i, int j)
 	else if (c == 'C')
 		map->count_c++;
 	else if (c != '0' && c != '1')
-		{
-			write(1,"check_char\n",11);
-			exit(EXIT_FAILURE);}
+		print_error("check char");
 }
 
 static void	scan_map(t_map *map)
@@ -48,9 +56,8 @@ void	validate_chars(t_map *map)
 	map->count_c = 0;
 	map->count_e = 0;
 	scan_map(map);
-	printf("player_x %d count_e %d count_c %d\n", map->player_x, map->count_e, map->count_c);
+	printf("player_x %d count_e %d count_c %d\n",
+		map->player_x, map->count_e, map->count_c);
 	if (map->player_x < 0 || map->count_e != 1 || map->count_c < 1)
-		{
-			write(1,"validate_char\n",14);
-			exit(EXIT_FAILURE);}
+		print_error("validate_chars");
 }

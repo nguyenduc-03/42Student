@@ -1,6 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   game_2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/19 17:10:33 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/19 17:10:33 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "game.h"
-#include <unistd.h>
-#include <stdlib.h>
 
 static	void	*load_image(t_game *g, const char *p)
 {
@@ -12,7 +22,7 @@ static	void	*load_image(t_game *g, const char *p)
 	h = g->img_height;
 	img = mlx_xpm_file_to_image(g->mlx, (char *)p, &w, &h);
 	if (!img || w != g->img_width || h != g->img_height)
-		write(2, "Error: Image load failed\n", 26);
+		print_error("Error: Image load failed");
 	return (img);
 }
 
