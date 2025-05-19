@@ -12,7 +12,7 @@ int	get_height(const char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE);
+		print_error("Failed to open file in get_height");
 	height = 0;
 	ret = read(fd, &c, 1);
 	while (ret > 0)
@@ -22,7 +22,7 @@ int	get_height(const char *path)
 		ret = read(fd, &c, 1);
 	}
 	if (ret < 0)
-		exit(EXIT_FAILURE);
+		print_error("Read error in get_height");
 	close(fd);
 	return (height + 1);
 }
@@ -36,7 +36,7 @@ int	get_width(const char *path)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE);
+		print_error("Failed to open file in get_width");
 	width = 0;
 	ret = read(fd, &c, 1);
 	while (ret > 0 && c != '\n')
@@ -44,6 +44,8 @@ int	get_width(const char *path)
 		width++;
 		ret = read(fd, &c, 1);
 	}
+	if (ret < 0)
+		print_error("Read error in get_width");
 	close(fd);
 	return (width);
 }

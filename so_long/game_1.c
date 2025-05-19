@@ -1,4 +1,5 @@
 #include "game.h"
+#include "check_map.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <X11/keysym.h>
@@ -93,7 +94,8 @@ int	handle_keypress(int keycode, t_game *g)
 	x = g->player_x;
 	y = g->player_y;
 	if (keycode == KEY_ESC)
-		exit(0);
+		{print_error("handle_keypress");
+			exit(0);}
 	else if (keycode == KEY_W)
 		move_player(g, x, y - 1);
 	else if (keycode == KEY_S)

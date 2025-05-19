@@ -7,7 +7,7 @@ static void	allocate_map(t_map *map)
 {
 	map->grid = malloc(sizeof(char *) * map->height);
 	if (!map->grid)
-		exit(EXIT_FAILURE);
+		print_error("Memory allocation failed for map");
 }
 
 static void	read_line(int fd, t_map *map, int i)
@@ -18,20 +18,24 @@ static void	read_line(int fd, t_map *map, int i)
 
 	map->grid[i] = malloc(map->width + 1);
 	if (!map->grid[i])
-		exit(EXIT_FAILURE);
+		print_error("Memory allocation failed for grid row");
 	j = 0;
 	while (j < map->width)
 	{
 		ret = read(fd, &c, 1);
-		if (ret <= 0)
-			exit(EXIT_FAILURE);
+		if (ret <= 0){
+			printf("Expected %d characters in line %d, but file ended early\n", map->width, i);
+			print_error("readline1");
+			exit(EXIT_FAILURE);}
 		map->grid[i][j] = c;
 		j++;
 	}
 	map->grid[i][j] = '\0';
 	ret = read(fd, &c, 1);
 	if (ret > 0 && c != '\n')
-		exit(EXIT_FAILURE);
+
+		{print_error("readline2");
+			exit(EXIT_FAILURE);}
 }
 
 static void	fill_map(const char *path, t_map *map)
@@ -41,7 +45,7 @@ static void	fill_map(const char *path, t_map *map)
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		exit(EXIT_FAILURE);
+		print_error("Failed to open file in fill_map");
 	i = 0;
 	while (i < map->height)
 	{
@@ -55,6 +59,7 @@ void	read_map_file(const char *path, t_map *map)
 {
 	map->height = get_height(path);
 	map->width = get_width(path);
+		printf("width = %d, height = %d\n", map->width, map->height); // DEBUG
 	allocate_map(map);
 	fill_map(path, map);
 }

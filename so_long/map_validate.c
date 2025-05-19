@@ -13,7 +13,10 @@ void	validate_rectangular(t_map *map)
 		while (map->grid[i][len])
 			len++;
 		if (len != map->width)
-			exit(EXIT_FAILURE);
+		{
+			printf("1\n");                          // ← added
+			print_error("Map is not rectangular");
+		}
 		i++;
 	}
 }
@@ -25,15 +28,24 @@ void	validate_borders(t_map *map)
 	i = 0;
 	while (i < map->width)
 	{
-		if (map->grid[0][i] != '1' || map->grid[map->height - 1][i] != '1')
-			exit(EXIT_FAILURE);
+		if (map->grid[0][i] != '1'
+		 || map->grid[map->height - 1][i] != '1')
+		{
+			printf("2\n");                          // ← added
+			print_error("Top or bottom border is not closed");
+		}
 		i++;
 	}
 	i = 0;
 	while (i < map->height)
 	{
-		if (map->grid[i][0] != '1' || map->grid[i][map->width - 1] != '1')
-			exit(EXIT_FAILURE);
+		if (map->grid[i][0] != '1'
+		 || map->grid[i][map->width - 1] != '1')
+		{
+			printf("3\n");                          // ← added
+			print_error("Left or right border is not closed");
+		}
 		i++;
 	}
 }
+

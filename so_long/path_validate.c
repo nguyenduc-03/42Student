@@ -1,5 +1,4 @@
 #include "check_map.h"
-#include <stdlib.h>
 
 static void	visit_horiz(t_map *map, t_bfs *bfs, int cx, int cy)
 {
@@ -71,7 +70,7 @@ void	validate_paths(t_map *map)
 	bfs.visited = malloc(sizeof(int) * map->height * map->width);
 	bfs.queue = malloc(sizeof(int) * map->height * map->width * 2);
 	if (!bfs.visited || !bfs.queue)
-		exit(EXIT_FAILURE);
+		print_error("Malloc error from bfd_visite");
 	bfs.head = 0;
 	bfs.tail = 1;
 	bfs.found_c = 0;
@@ -89,5 +88,7 @@ void	validate_paths(t_map *map)
 	free(bfs.visited);
 	free(bfs.queue);
 	if (bfs.found_c != map->count_c || !bfs.exit_reached)
-		exit(EXIT_FAILURE);
+		{
+			print_error("pathvalidate");
+			exit(EXIT_FAILURE);}
 }

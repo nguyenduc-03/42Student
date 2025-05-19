@@ -1,6 +1,16 @@
 #include "check_map.h"
 #include "game.h"
 #include <unistd.h>
+#include <stdint.h>
+#include <stdlib.h>
+
+void	print_error(const char *msg)
+{
+	while (*msg)
+		write(2, msg++, 1);
+	write(2, "\n", 1);
+	exit(EXIT_FAILURE);
+}
 
 static void	scan_map_vars(char **map, int width, int height,
 				int *px, int *py, int *hearts)
@@ -38,7 +48,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		write(2, "Usage: ./so_long <map_file>\n", 27);
+		write(2, "Usage: ./so_long <map_file>\n", 28);
 		return (1);
 	}
 	map = read_map(argv[1], &i[0], &i[1]);

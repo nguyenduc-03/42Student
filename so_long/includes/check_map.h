@@ -1,5 +1,7 @@
 #ifndef CHECK_MAP_H
 # define CHECK_MAP_H
+# include<stdio.h>
+# include<stdlib.h>
 
 typedef struct  s_map
 {
@@ -33,5 +35,5 @@ void	validate_borders(t_map *map);
 void	validate_chars(t_map *map);
 void	validate_paths(t_map *map);
 void	free_map(t_map *map);
-
+void	print_error(const char *msg);
 #endif

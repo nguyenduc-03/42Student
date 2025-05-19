@@ -30,5 +30,6 @@ void	start_game(char **map, int i[5]);
 
 
 void	load_images(t_game *g);
-int	mlx_pitw(t_game *g, void *img, int *i);
+int		mlx_pitw(t_game *g, void *img, int *i);
+
 #endif
