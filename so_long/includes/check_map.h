@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   check_map.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/23 01:08:54 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/23 01:08:54 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef CHECK_MAP_H
 # define CHECK_MAP_H
-# include<stdio.h>
-# include<stdlib.h>
+# include <stdio.h>
+# include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
 
-
-typedef struct  s_map
+typedef struct s_map
 {
 	char	**grid;
 	int		width;
@@ -17,7 +28,7 @@ typedef struct  s_map
 	int		count_e;
 }			t_map;
 
-typedef struct  s_bfs
+typedef struct s_bfs
 {
 	int	*visited;
 	int	*queue;
@@ -26,7 +37,6 @@ typedef struct  s_bfs
 	int	found_c;
 	int	exit_reached;
 }	t_bfs;
-
 
 char	**read_map(const char *filename, int *width, int *height);
 void	validate_map(char **grid, int width, int height);
