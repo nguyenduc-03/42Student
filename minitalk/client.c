@@ -54,7 +54,7 @@ static void	send_signal(pid_t id, char *message)
 				kill(id, SIGUSR1);
 			else if (result == 0)
 				kill(id, SIGUSR2);
-			usleep(142);
+			usleep(300);
 			j--;
 		}
 		i++;
