@@ -15,24 +15,24 @@ OBJ    = $(SRC:.c=.o)
 OBJ    = $(SRC:.c=.o)
 
 CC     = gcc
-CFLAGS = -Wall -Wextra -Werror -Imlx/minilibx -Iincludes
+CFLAGS = -Wall -Wextra -Werror -Imlx -Iincludes
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	@make -C mlx/minilibx
-	$(CC) $(CFLAGS) $^ -Lmlx/minilibx -lmlx -lXext -lX11 -lm -o $@
+	@make -C mlx
+	$(CC) $(CFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $@
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	@rm -f $(OBJ)
-	@make clean -C mlx/minilibx
+	@make clean -C mlx
 
 fclean: clean
 	@rm -f $(NAME)
-	@make clean -C mlx/minilibx
+	@make clean -C mlx
 
 re: fclean all
 
