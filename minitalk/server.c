@@ -1,60 +1,42 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   server.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 00:26:36 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/23 00:26:36 by ducnguye         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
+#include "libft/libft.h"
+#include <signal.h>
+#include <unistd.h>
 
-#include "minitalk.h"
-
-static void	ft_putpid(pid_t n)
+void	handle_signal(int signal, siginfo_t *info, void *context)
 {
-	char	c;
+	static unsigned char	current_char;
+	static int				bit_index;
 
-	if (n > 9)
+	(void)context;
+
+	current_char |= (signal == SIGUSR1);
+	bit_index++;
+	if (bit_index == 8)
 	{
-		ft_putpid((n / 10));
-		ft_putpid((n % 10));
+		if (current_char == '\0')
+			ft_printf("\n");
+		else
+			ft_printf("%c", current_char);
+		bit_index = 0;
+		current_char = 0;
 	}
 	else
-	{
-		c = 48 + n;
-		write(1, &c, 1);
-	}
-}
+		current_char <<= 1;
 
-static void	signal_handler(int signal)
-{
-	static char	chr;
-	static int	i;
-
-	i++;
-	if (signal == SIGUSR1)
-		chr = chr | 1;
-	if (i == 8)
-	{
-		write(1, &chr, 1);
-		i = 0;
-		chr = 0;
-	}
-	chr = chr << 1;
+	// ✅ Send acknowledgment back to the client
+	kill(info->si_pid, signal);  // Echo back the same signal
 }
 
 int	main(void)
 {
-	pid_t	server_id;
+	struct sigaction	sa;
 
-	server_id = getpid();
-	write(1, "PID :", 5);
-	ft_putpid(server_id);
-	write(1, "\n", 1);
-	signal(SIGUSR1, signal_handler);
-	signal(SIGUSR2, signal_handler);
+	ft_printf("PID: %d\n", getpid());
+	sa.sa_sigaction = handle_signal;
+	sa.sa_flags = SA_SIGINFO;
+	sigemptyset(&sa.sa_mask);
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	while (1)
 		pause();
 	return (0);

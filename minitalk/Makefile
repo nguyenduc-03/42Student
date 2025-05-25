@@ -1,37 +1,32 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/05/23 11:45:01 by ducnguye          #+#    #+#              #
-#    Updated: 2025/05/23 11:45:01 by ducnguye         ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
+CLIENT_SRCS = client.c
+SERVER_SRCS = server.c
 
-NAME	= minitalk
-SERVER	= server
-CLIENT	= client
-CC		= gcc
-CFLAGS	= -Wall -Wextra -Werror
-RM		= rm -f
+LIBFT_PATH = libft
+LIBFT_ARCHIVE = $(LIBFT_PATH)/libft.a
+CLIENT_NAME = client
+SERVER_NAME = server
 
-all: $(NAME)
 
-$(NAME): $(SERVER) $(CLIENT)
+all: $(CLIENT_NAME) $(SERVER_NAME)
 
-$(SERVER): server.c minitalk.h
-	$(CC) $(CFLAGS) -o server server.c
+$(CLIENT_NAME): $(CLIENT_SRCS) $(LIBFT_ARCHIVE)
+	$(CC) $(CFLAGS) -o $@ $(CLIENT_SRCS) -L$(LIBFT_PATH) -lft
 
-$(CLIENT): client.c minitalk.h
-	$(CC) $(CFLAGS) -o client client.c
+$(SERVER_NAME): $(SERVER_SRCS) $(LIBFT_ARCHIVE)
+	$(CC) $(CFLAGS) -o $@ $(SERVER_SRCS) -L$(LIBFT_PATH) -lft
+
+$(LIBFT_ARCHIVE):
+	$(MAKE) -C $(LIBFT_PATH)
 
 clean:
-	$(RM) $(SERVER) $(CLIENT) 
+	$(MAKE) -C $(LIBFT_PATH) clean
 
 fclean: clean
+	$(MAKE) -C $(LIBFT_PATH) fclean
+	rm -f $(CLIENT_NAME) $(SERVER_NAME) 
 
 re: fclean all
 
-.PHONY: all $(NAME) clean fclean re
+.PHONY: all clean fclean re 
