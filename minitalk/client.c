@@ -14,6 +14,7 @@
 #include <signal.h>
 #include <stdio.h>
 #include <string.h>
+#include <sys/types.h>
 
 void	send_signal(int pid, unsigned char character)
 {

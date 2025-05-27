@@ -1,15 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   $TM_FILENAME                                        :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguyen@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguyen@student.42berlin.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/17 12:01:32 by ducnguye         ###   ########.fr       */
+/*   Updated: 2025/05/27 15:32:37 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #include "libft.h"
+
 int	ft_putnbr_fd(int n, int fd)
 {
 	int	count;

@@ -1,6 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   server.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguyen@student.42berlin.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/27 15:00:50 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/05/27 15:00:50 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#define _POSIX_C_SOURCE 200809L
 #include "libft/libft.h"
 #include <signal.h>
 #include <unistd.h>
+#include <signal.h>
 
 void	handle_signal(int signal, siginfo_t *info, void *context)
 {
@@ -8,7 +22,6 @@ void	handle_signal(int signal, siginfo_t *info, void *context)
 	static int				bit_index;
 
 	(void)context;
-
 	current_char |= (signal == SIGUSR1);
 	bit_index++;
 	if (bit_index == 8)
@@ -22,9 +35,7 @@ void	handle_signal(int signal, siginfo_t *info, void *context)
 	}
 	else
 		current_char <<= 1;
-
-	// ✅ Send acknowledgment back to the client
-	kill(info->si_pid, signal);  // Echo back the same signal
+	kill(info->si_pid, signal);
 }
 
 int	main(void)
