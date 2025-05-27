@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "game.h"
+#include "check_map.h"
 
 static	void	*load_image(t_game *g, const char *p)
 {
@@ -64,7 +65,7 @@ void	render_map(t_game *g)
 	mlx_pitw(g, g->player_img, i);
 }
 
-int	handle_close(t_game *g)
+int	handle_close(t_game *g, t_map *m)
 {
 	int	i;
 
@@ -81,6 +82,11 @@ int	handle_close(t_game *g)
 		i++;
 	}
 	free(g->map);
+	if (m)
+		free_map(m);
+	mlx_destroy_display(g->mlx);
+	free(g->mlx);
+	g->mlx = NULL;
 	exit(0);
 	return (0);
 }

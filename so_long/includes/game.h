@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <X11/keysym.h>
 # include <mlx.h>
+# include <check_map.h>
 
 typedef struct s_game
 {
@@ -39,11 +40,12 @@ typedef struct s_game
 
 void	render_map(t_game *game);
 int		handle_keypress(int keycode, t_game *game);
-int		handle_close(t_game *game);
+int		handle_close(t_game *game, t_map *map);
 void	start_game(char **map, int i[5]);
 
 void	load_images(t_game *g);
 int		mlx_pitw(t_game *g, void *img, int *i);
 void	print_error(const char *msg);
-
+void	free_images_and_window(t_game *g);
+void	free_map_and_exit(t_game *g);
 #endif

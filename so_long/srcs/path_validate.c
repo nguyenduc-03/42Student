@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 
 #include "check_map.h"
+#include <string.h>
+
+void	*ft_memset(void *ptr, int value, size_t num)
+{
+	unsigned char	*p;
+
+	p = (unsigned char *)ptr;
+	while (num--)
+	{
+		*p++ = (unsigned char)value;
+	}
+	return (ptr);
+}
 
 static void	visit_horiz(t_map *map, t_bfs *bfs, int cx, int cy)
 {
@@ -80,9 +93,10 @@ void	validate_paths(t_map *map)
 	int		i[2];
 
 	bfs.visited = malloc(sizeof(int) * map->height * map->width);
+	memset(bfs.visited, 0, sizeof(int) * map->height * map->width);
 	bfs.queue = malloc(sizeof(int) * map->height * map->width * 2);
-	if (!bfs.visited || !bfs.queue)
-		print_error("Malloc error from bfd_visite");
+	if (!bfs.queue)
+		print_error("Malloc error for queue");
 	bfs.head = 0;
 	bfs.tail = 1;
 	bfs.found_c = 0;
