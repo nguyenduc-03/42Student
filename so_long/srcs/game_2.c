@@ -21,6 +21,7 @@ static	void	*load_image(t_game *g, const char *p)
 
 	w = g->img_width;
 	h = g->img_height;
+
 	img = mlx_xpm_file_to_image(g->mlx, (char *)p, &w, &h);
 	if (!img || w != g->img_width || h != g->img_height)
 		print_error("Error: Image load failed");
@@ -69,29 +70,67 @@ int	handle_close(t_game *g, t_map *m)
 {
 	int	i;
 
-	mlx_destroy_image(g->mlx, g->wall_img);
-	mlx_destroy_image(g->mlx, g->bg_img);
-	mlx_destroy_image(g->mlx, g->heart_img);
-	mlx_destroy_image(g->mlx, g->exit_img);
-	mlx_destroy_image(g->mlx, g->player_img);
-	mlx_destroy_window(g->mlx, g->win);
-	i = 0;
-	while (i < g->map_height)
+	if (g->wall_img)
 	{
-		free(g->map[i]);
-		i++;
+		mlx_destroy_image(g->mlx, g->wall_img);
+		g->wall_img = NULL;
 	}
-	free(g->map);
+	if (g->bg_img)
+	{
+		mlx_destroy_image(g->mlx, g->bg_img);
+		g->bg_img = NULL;
+	}
+	if (g->heart_img)
+	{
+		mlx_destroy_image(g->mlx, g->heart_img);
+		g->heart_img = NULL;
+	}
+	if (g->exit_img)
+	{
+		mlx_destroy_image(g->mlx, g->exit_img);
+		g->exit_img = NULL;
+	}
+	if (g->player_img)
+	{
+		mlx_destroy_image(g->mlx, g->player_img);
+		g->player_img = NULL;
+	}
+	if (g->win)
+	{
+		mlx_destroy_window(g->mlx, g->win);
+		g->win = 0;
+	}
+
+	if (g->map)
+	{
+		for (i = 0; i < g->map_height; i++)
+			free(g->map[i]);
+		free(g->map);
+		g->map = NULL;
+	}
+
 	if (m)
 		free_map(m);
-	mlx_destroy_display(g->mlx);
-	free(g->mlx);
-	g->mlx = NULL;
-	exit(0);
+
+	if (g->mlx)
+	{
+		mlx_destroy_display(g->mlx);
+		free(g->mlx);
+		g->mlx = NULL;
+	}
+	
 	return (0);
 }
+
+
 
 int	mlx_pitw(t_game *g, void *img, int *i)
 {
 	return (mlx_put_image_to_window(g->mlx, g->win, img, i[2], i[3]));
+}
+
+int	clean_up(t_game *g)
+{
+	mlx_loop_end(g->mlx); // Tell MLX to stop the loop gracefully
+	return (0);
 }

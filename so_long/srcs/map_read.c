@@ -16,7 +16,10 @@ static void	allocate_map(t_map *map)
 {
 	map->grid = malloc(sizeof(char *) * map->height);
 	if (!map->grid)
+	{
+		free_map(map);
 		print_error("Memory allocation failed for map");
+	}
 }
 
 static void	read_line(int fd, t_map *map, int i)

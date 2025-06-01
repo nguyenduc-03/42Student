@@ -14,7 +14,7 @@ OBJ    = $(SRC:.c=.o)
 
 OBJ    = $(SRC:.c=.o)
 
-CC     = gcc
+CC     = cc
 CFLAGS = -Wall -Wextra -Werror -Imlx -Iincludes
 
 all: $(NAME)

@@ -103,7 +103,7 @@ int	handle_keypress(int keycode, t_game *g)
 	x = g->player_x;
 	y = g->player_y;
 	if (keycode == KEY_ESC)
-		exit(0);
+		mlx_loop_end(g->mlx);
 	else if (keycode == KEY_W)
 		move_player(g, x, y - 1);
 	else if (keycode == KEY_S)
@@ -115,10 +115,30 @@ int	handle_keypress(int keycode, t_game *g)
 	return (0);
 }
 
+int	key_hook(int keycode, t_game *g)
+{
+	if (keycode == 65307) // ESC keycode on Linux X11
+	{
+		mlx_loop_end(g->mlx);
+		mlx_destroy_window(g->mlx, g->win);
+			if (g->mlx)
+		{
+		mlx_destroy_display(g->mlx);
+		free(g->mlx);
+		g->mlx = NULL;
+		}
+		exit(1);
+	}
+
+	return (0);
+}
+#include <string.h>
 void	start_game(char **m, int i[5])
 {
 	t_game	g;
+	t_map	map;
 
+	memset(&g, 0, sizeof(t_game));
 	g.mlx = mlx_init();
 	if (!g.mlx)
 		print_error("MLX init failed");
@@ -136,9 +156,11 @@ void	start_game(char **m, int i[5])
 	g.moves = 0;
 	load_images(&g);
 	render_map(&g);
-	mlx_hook(g.win, 2, 1L << 0, handle_keypress, &g);
-	mlx_hook(g.win, 17, 0, handle_close, &g);
+	mlx_key_hook(g.win, key_hook, &g);
+	//mlx_hook(g.win, 2, 1L << 0, handle_keypress, &g);
+	mlx_hook(g.win, 17, 0, clean_up, &g);
 	mlx_loop(g.mlx);
+	handle_close(&g, &map);
 }
 
 /*Original Variable | New Notation (i[index]) | Description

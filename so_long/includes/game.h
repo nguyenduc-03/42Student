@@ -48,4 +48,5 @@ int		mlx_pitw(t_game *g, void *img, int *i);
 void	print_error(const char *msg);
 void	free_images_and_window(t_game *g);
 void	free_map_and_exit(t_game *g);
+int		clean_up(t_game *g);
 #endif
