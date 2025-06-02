@@ -1,4 +1,3 @@
-#!/bin/zsh
 
 PATH_TO_CLIENT="./client"
 

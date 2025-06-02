@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: rwrobles <rwrobles@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/27 15:30:58 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/17 13:59:21 by rwrobles          #+#    #+#             */
+/*   Updated: 2024/11/17 17:45:07 by rwrobles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,28 @@
 
 int	ft_atoi(const char *str)
 {
-	int	i;
-	int	sign;
-	int	result;
+	long	nbr;
+	int		sign;
 
-	i = 0;
+	nbr = 0;
 	sign = 1;
-	result = 0;
-	while (str[i] == ' ' || (str[i] >= '\t' && str[i] <= '\r'))
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
 	{
-		i++;
+		if (*str == '-')
+			sign = -1;
+		str++;
 	}
-	if (str[i] == '-')
+	while (*str >= '0' && *str <= '9')
 	{
-		sign = -sign;
-		i++;
+		if (nbr > (nbr * 10 + (*str - '0')) / 10)
+		{
+			if (sign == 1)
+				return (-1);
+			return (0);
+		}
+		nbr = nbr * 10 + (*str++ - '0');
 	}
-	else if (str[i] == '+')
-		i++;
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = result * 10 + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	return ((int)(nbr * sign));
 }

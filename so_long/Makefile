@@ -1,38 +1,44 @@
-NAME   = so_long
-SRC    = srcs/main.c \
-		srcs/game_1.c \
-		srcs/game_2.c \
-		srcs/check_map.c \
-		srcs/map_utils.c \
-		srcs/map_read.c \
-		srcs/map_validate.c \
-		srcs/char_validate.c \
-		srcs/path_validate.c
+NAME = so_long
 
-OBJ    = $(SRC:.c=.o)
+SRCS = so_long.c so_long_error_utils.c so_long_coord_utils.c so_long_map_check.c \
+	   so_long_utils.c so_long_clean_utils.c so_long_game_utils.c
 
+OBJS = ${SRCS:.c=.o}
 
-OBJ    = $(SRC:.c=.o)
+CC = cc
 
-CC     = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -Iincludes
+CFLAGS = -Wall -Werror -Wextra
 
-all: $(NAME)
+RM = rm -rf
 
-$(NAME): $(OBJ)
-	@make -C mlx
-	$(CC) $(CFLAGS) $^ -Lmlx -lmlx -lXext -lX11 -lm -o $@
+LIBFT_INCLUDE = -I libft/
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+LIBFT_LIB = -L libft/. -lft
+
+MINI_LIBX_INCLUDE = -I /usr/include -Imlx
+
+MINI_LIBX_LIB = -L minilibx-linux/. -lmlx
+
+X_11_FLAGS =  -L /usr/lib/X11 -lXext -lX11
+
+all: ${NAME}
+
+.c.o:
+	${CC} ${CFLAGS} ${LIBFT_INCLUDE} ${MINI_LIBX_INCLUDE} -c $< -o ${<:.c=.o}
+
+${NAME}: ${OBJS}
+	make -C minilibx-linux
+	make -C libft bonus
+	${CC} ${CFLAGS} ${OBJS} ${LIBFT_LIB} ${MINI_LIBX_LIB} ${X_11_FLAGS} -o ${NAME}
 
 clean:
-	@rm -f $(OBJ)
-	@make clean -C mlx
+	make -C minilibx-linux clean
+	make -C libft clean
+	${RM} ${OBJS}
 
 fclean: clean
-	@rm -f $(NAME)
-	@make clean -C mlx
+	make -C libft fclean
+	${RM} ${NAME}
 
 re: fclean all
 

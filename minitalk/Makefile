@@ -1,32 +1,48 @@
-CC = gcc
+NAME 	= minitalk
+SERVER	= server
+CLIENT	= client
+
+CC = cc
 CFLAGS = -Wall -Wextra -Werror
-CLIENT_SRCS = client.c
-SERVER_SRCS = server.c
 
-LIBFT_PATH = libft
-LIBFT_ARCHIVE = $(LIBFT_PATH)/libft.a
-CLIENT_NAME = client
-SERVER_NAME = server
+LIBFT		= ./libft/libft.a
+LIBFTDIR 	= ./libft
 
+RM = rm -f
 
-all: $(CLIENT_NAME) $(SERVER_NAME)
+SRC_SERVER = server.c
+SRC_CLIENT = client.c
 
-$(CLIENT_NAME): $(CLIENT_SRCS) $(LIBFT_ARCHIVE)
-	$(CC) $(CFLAGS) -o $@ $(CLIENT_SRCS) -L$(LIBFT_PATH) -lft
+OBJ_SERVER = $(SRC_SERVER:.c=.o)
+OBJ_CLIENT = $(SRC_CLIENT:.c=.o)
 
-$(SERVER_NAME): $(SERVER_SRCS) $(LIBFT_ARCHIVE)
-	$(CC) $(CFLAGS) -o $@ $(SERVER_SRCS) -L$(LIBFT_PATH) -lft
+all: $(LIBFT) $(SERVER) $(CLIENT)
 
-$(LIBFT_ARCHIVE):
-	$(MAKE) -C $(LIBFT_PATH)
+$(LIBFT):
+	@make -C $(LIBFTDIR)
+	@echo "✅ Libft compiled successfully."
+
+$(SERVER): $(LIBFT) $(OBJ_SERVER)
+	$(CC) $(CFLAGS) $(OBJ_SERVER) -o $(SERVER) -L$(LIBFTDIR) -lft
+	@echo "🚀 Server compiled successfully."
+
+$(CLIENT): $(LIBFT) $(OBJ_CLIENT)
+	$(CC) $(CFLAGS) $(OBJ_CLIENT) -o $(CLIENT) -L$(LIBFTDIR) -lft
+	@echo "🚀 Client compiled successfully."
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(MAKE) -C $(LIBFT_PATH) clean
+	$(RM) $(OBJ_SERVER) $(OBJ_CLIENT)
+	@make -C $(LIBFTDIR) clean
+	@echo "🧹 Cleaned object files."
 
 fclean: clean
-	$(MAKE) -C $(LIBFT_PATH) fclean
-	rm -f $(CLIENT_NAME) $(SERVER_NAME) 
+	$(RM) $(SERVER) $(CLIENT)
+	@make -C $(LIBFTDIR) fclean
+	@echo "🗑️  Full clean done."
 
 re: fclean all
 
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re

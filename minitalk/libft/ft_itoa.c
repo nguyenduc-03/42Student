@@ -3,64 +3,75 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: rwrobles <rwrobles@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/27 15:30:58 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/17 13:55:48 by rwrobles          #+#    #+#             */
+/*   Updated: 2024/11/17 14:55:23 by rwrobles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	calculate_digits(long long n)
-{
-	int	len;
+static	int	ft_nblength(long int nb);
 
-	len = 0;
-	if (n == 0)
-		return (1);
-	if (n < 0)
-		len++;
-	while (n)
-	{
-		n = n / 10;
-		len++;
-	}
-	return (len);
-}
+static	char	*ft_rev_str(char *str);
 
-char	*null_case( char *str)
+char	*ft_itoa(int nb)
 {
-	str[0] = '0';
-	str[1] = '\0';
-	return (str);
-}
-
-char	*ft_itoa(int n)
-{
-	long long	num;
-	int			len;
 	int			i;
+	long int	sign;
+	long int	nbr;
 	char		*str;
 
-	num = n;
-	len = calculate_digits(num);
-	str = (char *)malloc(len + 1);
-	if (!str)
+	i = 0;
+	sign = 0;
+	nbr = (long int)nb;
+	str = (char *)ft_calloc((ft_nblength(nbr) + 1), sizeof(char));
+	if (str == NULL)
 		return (NULL);
-	if (num == 0)
-		return (null_case(str));
-	i = len - 1;
-	if (num < 0)
+	if (nbr == 0)
+		str[i++] = '0';
+	if (nbr < 0)
+		nbr *= --sign;
+	while (nbr > 0)
 	{
-		str[0] = '-';
-		num = -num;
+		str[i++] = (nbr % 10) + '0';
+		nbr /= 10;
 	}
-	while (num)
+	if (sign)
+		str[i++] = '-';
+	str[i] = '\0';
+	return (str = ft_rev_str(str));
+}
+
+static	int	ft_nblength(long int nb)
+{
+	int	length;
+
+	length = 0;
+	if (nb <= 0)
+		length++;
+	while (nb)
 	{
-		str[i--] = num % 10 + '0';
-		num = num / 10;
+		nb /= 10;
+		length++;
 	}
-	str[len] = '\0';
+	return (length);
+}
+
+static	char	*ft_rev_str(char *str)
+{
+	int	start;
+	int	final;
+
+	start = 0;
+	final = ft_strlen(str) - 1;
+	while (start < final - start)
+	{
+		str[start] = str[start] ^ str[final - start];
+		str[final - start] = str[start] ^ str[final - start];
+		str[start] = str[start] ^ str[final - start];
+		start++;
+	}
 	return (str);
 }

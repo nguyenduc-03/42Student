@@ -3,33 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*   By: rwrobles <rwrobles@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/27 15:30:58 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/17 14:50:39 by rwrobles          #+#    #+#             */
+/*   Updated: 2024/11/17 14:52:31 by rwrobles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *big, const char *little, size_t len)
+char	*ft_strnstr(const char *str, const char *to_find, size_t size)
 {
 	size_t	i;
-	size_t	j;
+	size_t	find_size;
 
-	if (*little == '\0')
-		return ((char *)big);
 	i = 0;
-	while (big[i] != '\0' && i < len)
+	find_size = ft_strlen(to_find);
+	if (!find_size)
+		return ((char *) str);
+	if (!size)
+		return (0);
+	while (str[i] && i + find_size <= size)
 	{
-		j = 0;
-		while (big[i + j] == little[j] && (i + j) < len)
-		{
-			if (little[j + 1] == '\0')
-				return ((char *)&big[i]);
-			j++;
-		}
+		if (!ft_strncmp(&str[i], to_find, find_size))
+			return ((char *) &str[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }

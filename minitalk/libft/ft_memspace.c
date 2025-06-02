@@ -1,16 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_memspace.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rwrobles <rwrobles@student.42berlin.d      +#+  +:+       +#+        */
+/*   By: rwrobles <rwrobles@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/17 13:41:59 by rwrobles          #+#    #+#             */
-/*   Updated: 2024/11/17 13:42:01 by rwrobles         ###   ########.fr       */
+/*   Created: 2024/11/17 13:45:00 by rwrobles          #+#    #+#             */
+/*   Updated: 2024/11/17 13:53:12 by rwrobles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isdigit(int argument)
+#include "libft.h"
+
+void	*ft_memset(void *s, int argument, size_t length)
 {
-	return (argument >= '0' && argument <= '9');
+	size_t			i;
+	unsigned char	*str;
+
+	i = 0;
+	str = (unsigned char *)s;
+	while (i < length)
+	{
+		str[i] = (unsigned char) argument;
+		i++;
+	}
+	return (s);
 }

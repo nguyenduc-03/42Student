@@ -3,31 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ducnguye <ducnguyen@student.42berlin.de    +#+  +:+       +#+        */
+/*   By: rwrobles <rwrobles@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/05/27 15:32:37 by ducnguye         ###   ########.fr       */
+/*   Created: 2024/11/17 13:57:28 by rwrobles          #+#    #+#             */
+/*   Updated: 2024/11/17 14:48:22 by rwrobles         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_putnbr_fd(int n, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	count;
+	int	sum;
 
-	count = 0;
-	if (n == -2147483648)
-	{
-		count += ft_putstr_fd("-2147483648", fd);
-		return (count);
-	}
+	sum = 0;
 	if (n < 0)
 	{
-		count += ft_putchar_fd('-', fd);
-		n = -n;
+		ft_putchar_fd('-', fd);
+		n *= -1;
+		if (n == -2147483648)
+		{
+			n--;
+			sum = 1;
+		}
 	}
-	if (n > 9)
-		count += ft_putnbr_fd(n / 10, fd);
-	return (count + ft_putchar_fd((n % 10) + '0', fd));
+	if (n < 10)
+		ft_putchar_fd(n + '0' + sum, fd);
+	else
+	{
+		ft_putnbr_fd(n / 10, fd);
+		ft_putnbr_fd(n % 10 + sum, fd);
+	}
 }
