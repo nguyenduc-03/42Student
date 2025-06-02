@@ -6,7 +6,7 @@
 #    By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/21 16:56:25 by ducnguye          #+#    #+#              #
-#    Updated: 2025/06/01 04:36:45 by ducnguye         ###   ########.fr        #
+#    Updated: 2025/06/02 14:48:02 by ducnguye         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,8 @@ SRC = ft_isalpha \
 	ft_printf \
 	ft_putnbr_base_fd\
 	ft_strlen_chr\
-	get_next_line
+	read_map_lines\
+	read_entire_files
 BONUS_SRC = ft_lstnew \
 	ft_lstadd_front \
 	ft_lstsize \

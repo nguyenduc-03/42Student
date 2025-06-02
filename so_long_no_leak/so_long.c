@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long.c                                          */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 22:26:32 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 23:00:33 by edfreder         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+int	key_press(int keycode, t_game *game)
+{
+	if (keycode == 65307)
+		exit_game(game);
+	return (0);
+}
 
 void	start_game(t_game *game, int w, int h)
 {

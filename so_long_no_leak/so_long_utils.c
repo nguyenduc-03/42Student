@@ -1,42 +1,66 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_utils.c                                    :+:      :+:    :+:   */
+/*   so_long_utils.c                                    */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/29 14:31:04 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 22:55:36 by edfreder         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	build_map(t_list **lst, int fd)
+int	process_line(char *line, int *line_len, t_list **lst)
 {
-	char	*line;
-	int		line_len;
 	int		curr_len;
+	char	*line_copy;
 	t_list	*new;
 
-	line_len = 0;
-	while (1)
+	curr_len = ft_strlen(line);
+	while (curr_len > 0 && (line[curr_len - 1] == '\n'
+			|| line[curr_len - 1] == '\r'))
+		line[--curr_len] = '\0';
+	if (!check_rectangule(line_len, &curr_len))
+		return (send_err("Not a rectangule.", 0));
+	line_copy = ft_strdup(line);
+	if (!line_copy)
+		return (0);
+	new = ft_lstnew(line_copy);
+	if (!new)
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		curr_len = ft_strlen(line);
-		line[curr_len - 1] = '\0';
-		new = ft_lstnew(line);
-		if (!new)
+		free(line_copy);
+		return (0);
+	}
+	ft_lstadd_back(lst, new);
+	return (1);
+}
+
+int	build_map(t_list **lst, int fd)
+{
+	char	**lines;
+	int		i;
+	int		line_len;
+
+	lines = get_map_lines(fd);
+	if (!lines)
+		return (0);
+	line_len = 0;
+	i = -1;
+	while (lines[++i])
+	{
+		if (!process_line(lines[i], &line_len, lst))
 		{
-			free(line);
+			while (lines[i])
+				free(lines[i++]);
+			free(lines);
+			ft_lstclear(lst, free);
 			return (0);
 		}
-		ft_lstadd_back(lst, new);
-		if (!check_rectangule(&line_len, &curr_len))
-			return (send_err("Map is not a rectangule.", 0));
+		free(lines[i]);
 	}
+	free(lines);
 	return (1);
 }
 
@@ -85,19 +109,6 @@ char	**create_grid(t_list *lst, int height)
 	}
 	grid[height] = NULL;
 	return (grid);
-}
-
-void	reset_map(char **grid_map, t_map *map)
-{
-	t_coord	*ptr;
-
-	mark_plays(grid_map, map->start_coord.x, map->start_coord.y, '0');
-	ptr = map->colls_coord;
-	while (ptr)
-	{
-		grid_map[ptr->y][ptr->x] = 'C';
-		ptr = ptr->next;
-	}
 }
 
 char	**get_grid_map(t_list **lst, t_game *game, int *fd, char *filename)

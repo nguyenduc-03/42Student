@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_game_utils.c                               :+:      :+:    :+:   */
+/*   so_long_game_utils.c                               */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/31 21:59:30 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 22:59:44 by edfreder         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,8 @@ void	move_player(int x, int y, t_game *game)
 
 int	handle_key(int keysym, t_game *game)
 {
+	if (keysym == XK_Escape)
+		exit_game(game);
 	if (keysym == XK_w || keysym == XK_Up)
 		move_player(game->map.start_coord.x, game->map.start_coord.y - 1, game);
 	if (keysym == XK_s || keysym == XK_Down)

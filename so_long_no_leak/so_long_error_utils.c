@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_error_utils.c                              :+:      :+:    :+:   */
+/*   so_long_error_utils.c                              */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/28 23:47:27 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 23:03:05 by edfreder         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,17 @@ int	is_valid_path(int *fd, char *filename)
 		return (0);
 	}
 	return (1);
+}
+
+void	reset_map(char **grid_map, t_map *map)
+{
+	t_coord	*ptr;
+
+	mark_plays(grid_map, map->start_coord.x, map->start_coord.y, '0');
+	ptr = map->colls_coord;
+	while (ptr)
+	{
+		grid_map[ptr->y][ptr->x] = 'C';
+		ptr = ptr->next;
+	}
 }

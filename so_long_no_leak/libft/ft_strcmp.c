@@ -1,8 +1,23 @@
-int ft_strcmp(char *s1, char *s2)
-{
-	int i = 0;
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strcmp.c                                        */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-	while((s1[i] == s2[i]) && s1[i] && s2[i])
+#include "libft.h"
+
+int	ft_strcmp(char *s1, char *s2)
+{
+	int	i;
+
+	i = 0;
+	while ((s1[i] == s2[i]) && s1[i] && s2[i])
 		i++;
-	return (s1[i]-s2[i]);
+	return (s1[i] - s2[i]);
 }

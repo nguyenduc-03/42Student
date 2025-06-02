@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   libft.h                                            */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/01 12:00:00 by ducnguye          #+#    #+#             */
-/*   Updated: 2025/06/01 04:38:07 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,24 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
+
+# ifndef MAX_FD
+#  define MAX_FD 1024
+# endif
+
 /* ---------------	CHARS		--------------- */
 int		ft_isalpha(int c);
 size_t	ft_strlen_chr(const char *s, char c);
-char	*get_next_line(int fd);
+char	*ft_free(char *buffer, char *buf);
+char	*ft_next(char *buffer);
+char	*ft_line(char *buffer);
 
+char	*read_entire_file(int fd);
+char	**get_map_lines(int fd);
+
+char	*read_file(int fd, char *res);
 int		ft_isdigit(int c);
-int ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
 int		ft_isprint(int c);

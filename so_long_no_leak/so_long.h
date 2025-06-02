@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long.h                                          */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/27 13:31:17 by edfreder          #+#    #+#             */
-/*   Updated: 2025/06/01 04:20:01 by ducnguye         ###   ########.fr       */
+/*   Created: 2025/06/01 12:00:00 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 12:00:00 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include "minilibx-linux/mlx.h"
 # include "X11/keysym.h"
 # include "X11/X.h"
-#include <fcntl.h>
+# include <fcntl.h>
 
 typedef struct s_coord
 {
@@ -98,5 +98,6 @@ int		handle_key(int keysym, t_game *game);
 void	move_player(int x, int y, t_game *game);
 int		load_images(t_image *image, void *mlx_ptr);
 void	mount_game(t_game *game);
+void	reset_map(char **grid_map, t_map *map);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long_clean_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: edfreder <edfreder@student.42porto.com>    +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/30 12:02:26 by edfreder          #+#    #+#             */
-/*   Updated: 2025/05/31 23:00:04 by edfreder         ###   ########.fr       */
+/*   Created: 2025/05/30 12:02:26 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/06/02 00:49:26 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
