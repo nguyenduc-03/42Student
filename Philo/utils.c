@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/16 09:17:55 by druina            #+#    #+#             */
-/*   Updated: 2023/08/16 16:31:28 by druina           ###   ########.fr       */
+/*   Created: 2025/08/17 13:49:16 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/08/17 14:06:07 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ void	destory_all(char *str, t_program *program, pthread_mutex_t *forks)
 	i = 0;
 	if (str)
 	{
-		write(2, str, ft_strlen(str));
-		write(2, "\n", 1);
+		write(1, str, ft_strlen(str));
+		write(1, "\n", 1);
 	}
 	pthread_mutex_destroy(&program->write_lock);
 	pthread_mutex_destroy(&program->meal_lock);
@@ -91,6 +91,6 @@ size_t	get_current_time(void)
 	struct timeval	time;
 
 	if (gettimeofday(&time, NULL) == -1)
-		write(2, "gettimeofday() error\n", 22);
+		write(1, "gettimeofday() error\n", 22);
 	return (time.tv_sec * 1000 + time.tv_usec / 1000);
 }

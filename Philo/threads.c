@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   threads.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 14:01:57 by druina            #+#    #+#             */
-/*   Updated: 2023/08/17 08:48:42 by druina           ###   ########.fr       */
+/*   Created: 2025/08/17 13:49:20 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/08/17 14:28:11 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 	pthread_t	observer;
 	int			i;
 
-	if (pthread_create(&observer, NULL, &monitor, program->philos) != 0) // purpose?
+	if (pthread_create(&observer, NULL, &monitor, program->philos) != 0)
 		destory_all("Thread creation error", program, forks);
 	i = 0;
 	while (i < program->philos[0].num_of_philos)
@@ -59,7 +59,7 @@ int	thread_create(t_program *program, pthread_mutex_t *forks)
 		i++;
 	}
 	i = 0;
-	if (pthread_join(observer, NULL) != 0) //purpose?
+	if (pthread_join(observer, NULL) != 0)
 		destory_all("Thread join error", program, forks);
 	while (i < program->philos[0].num_of_philos)
 	{

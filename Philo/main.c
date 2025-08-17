@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 14:23:28 by druina            #+#    #+#             */
-/*   Updated: 2023/08/16 16:30:43 by druina           ###   ########.fr       */
+/*   Created: 2025/08/17 13:49:12 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/08/17 14:06:06 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int	check_valid_args(char **argv)
 {
 	if (ft_atoi(argv[1]) > PHILO_MAX || ft_atoi(argv[1]) <= 0
 		|| check_arg_content(argv[1]) == 1)
-		return (write(2, "Invalid philosophers number\n", 29), 1);
+		return (write(1, "Invalid philosophers number\n", 29), 1);
 	if (ft_atoi(argv[2]) <= 0 || check_arg_content(argv[2]) == 1)
-		return (write(2, "Invalid time to die\n", 21), 1);
+		return (write(1, "Invalid time to die\n", 21), 1);
 	if (ft_atoi(argv[3]) <= 0 || check_arg_content(argv[3]) == 1)
-		return (write(2, "Invalid time to eat\n", 21), 1);
+		return (write(1, "Invalid time to eat\n", 21), 1);
 	if (ft_atoi(argv[4]) <= 0 || check_arg_content(argv[4]) == 1)
-		return (write(2, "Invalid time to sleep\n", 23), 1);
+		return (write(1, "Invalid time to sleep\n", 23), 1);
 	if (argv[5] && (ft_atoi(argv[5]) < 0 || check_arg_content(argv[5]) == 1))
-		return (write(2, "Invalid number of times each philosopher must eat\n",
+		return (write(1, "Invalid number of times each philosopher must eat\n",
 				51), 1);
 	return (0);
 }
@@ -55,7 +55,7 @@ int	main(int argc, char **argv)
 	pthread_mutex_t	forks[PHILO_MAX];
 
 	if (argc != 5 && argc != 6)
-		return (write(2, "Wrong argument count\n", 22), 1);
+		return (write(1, "Wrong argument count\n", 22), 1);
 	if (check_valid_args(argv) == 1)
 		return (1);
 	init_program(&program, philos);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   monitor.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/11 22:22:47 by druina            #+#    #+#             */
-/*   Updated: 2023/08/16 17:27:17 by druina           ###   ########.fr       */
+/*   Created: 2025/08/17 13:49:05 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/08/17 14:06:05 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ int	check_if_all_ate(t_philo *philos)
 
 	i = 0;
 	finished_eating = 0;
-	if (philos[0].num_times_to_eat == -1) // why does it has to be philos[0], maybe it doenst matter
+	if (philos[0].num_times_to_eat == -1)
 		return (0);
 	while (i < philos[0].num_of_philos)
 	{

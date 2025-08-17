@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: druina <druina@student.hive.fi>            +#+  +:+       +#+        */
+/*   By: ducnguye <ducnguye@student.42berlin.de>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/26 14:20:06 by druina            #+#    #+#             */
-/*   Updated: 2023/08/17 08:59:39 by druina           ###   ########.fr       */
+/*   Created: 2025/08/17 13:49:53 by ducnguye          #+#    #+#             */
+/*   Updated: 2025/08/17 14:30:43 by ducnguye         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,8 @@ void				*monitor(void *pointer);
 void				*philo_routine(void *pointer);
 
 // Actions
+void				take_forks(t_philo *philo,
+						pthread_mutex_t **first, pthread_mutex_t **second);
 void				eat(t_philo *philo);
 void				dream(t_philo *philo);
 void				think(t_philo *philo);
