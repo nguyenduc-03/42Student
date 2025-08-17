@@ -1,6 +1,0 @@
-# Exe
-philo
-objs/
-*.o
-.vscode/
-philo/test.sh
